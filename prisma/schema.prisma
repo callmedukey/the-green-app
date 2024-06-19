@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model user {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  phone     String   @unique
+  name      String
+  password  String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  inquiry inquiry[]
+
+  passwordResetCode passwordResetCode?
+}
+
+model inquiry {
+  id        String   @id @default(uuid())
+  userId    String
+  user      user     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  attachments attachments[]
+}
+
+model passwordResetCode {
+  id        String   @id @default(uuid())
+  code      String
+  user      user     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  createdAt DateTime @default(now())
+}
+
+model attachments {
+  id        String   @id @default(uuid())
+  inquiryId String
+  inquiry   inquiry  @relation(fields: [inquiryId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model verificationCode {
+  id        String   @id @default(uuid())
+  code      String
+  createdAt DateTime @default(now())
+}
