@@ -1,0 +1,96 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { signInUser } from "@/actions/auth-actions";
+import Link from "next/link";
+
+const LoginSchema = z.object({
+  username: z
+    .string()
+    .min(4, "아이디는 최소 4자 이상입니다.")
+    .max(14, "아이디는 최대 14자 이하입니다."),
+  password: z
+    .string()
+    .min(8)
+    .max(20)
+    .regex(
+      /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/,
+      "비밀번호는 최소8자 최대20자, 숫자, 특수문자를 포함해야 합니다."
+    ),
+});
+const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
+    if (!cameFromQuote) {
+      await signInUser(data.username, data.password, "/account");
+    } else {
+      await signInUser(data.username, data.password, cameFromQuote);
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>아이디</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>비밀번호</FormLabel>
+              <FormControl>
+                <Input {...field} type="password" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button className="w-full mt-6 font-bold">로그인</Button>
+        <Button className="w-full mt-2 font-bold" variant="outline" asChild>
+          <Link href="/register">회원가입</Link>
+        </Button>
+        <div className="flex justify-between text-sm mt-2">
+          <Link href="/find-username" className="">
+            아이디 찾기
+          </Link>
+          <Link href="/reset-password" className="">
+            비밀번호 초기화
+          </Link>
+        </div>
+      </form>
+    </Form>
+  );
+};
+
+export default LoginForm;
