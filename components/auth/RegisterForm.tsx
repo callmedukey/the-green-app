@@ -78,7 +78,17 @@ const RegisterSchema = z.object({
   address: z.string({ required_error: "주소를 입력해주세요" }),
 });
 
-const RegisterForm = ({ cookieSentTime }: { cookieSentTime: string }) => {
+const RegisterForm = ({
+  cookieSentTime,
+  cameFromQuote,
+  name,
+  phone,
+}: {
+  cookieSentTime: string;
+  cameFromQuote: string;
+  name: string;
+  phone: string;
+}) => {
   const [timer, setTimer] = useState(0);
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
@@ -90,10 +100,10 @@ const RegisterForm = ({ cookieSentTime }: { cookieSentTime: string }) => {
       email: "",
       password: "",
       passwordConfirm: "",
-      name: "",
+      name: name,
       address: "",
       detailedAddress: "",
-      phone: "",
+      phone: phone,
       verificationCode: "",
       username: "",
     },
@@ -140,7 +150,11 @@ const RegisterForm = ({ cookieSentTime }: { cookieSentTime: string }) => {
       }
 
       if (redirectTo) {
-        await signInUser(data.username, data.password, redirectTo);
+        await signInUser(
+          data.username,
+          data.password,
+          cameFromQuote ? "/easy-quote/result" : redirectTo
+        );
       }
     } catch (error) {
       console.error(error);

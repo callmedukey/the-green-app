@@ -184,12 +184,9 @@ export const registerUser = async ({
       return { error: "회원가입 실패" };
     }
 
-    const cookieStore = cookies();
-    const cameFromQuote = cookieStore.get("cameFromQuote")?.value;
-
     return {
       message: "회원가입 성공",
-      redirectTo: "/redirected-after",
+      redirectTo: "/account",
     };
   } catch (error) {
     console.log(error);
@@ -202,6 +199,19 @@ export const signInUser = async (
   password: string,
   redirectTo: string
 ) => {
+  const userExists = await prisma.user.findFirst({
+    where: {
+      username,
+      password: await saltAndHashPassword(password),
+    },
+  });
+
+  if (!userExists) {
+    return {
+      error: "아이디 또는 비밀번호가 잘못되었습니다.",
+    };
+  }
+
   return signIn("credentials", {
     username,
     password,

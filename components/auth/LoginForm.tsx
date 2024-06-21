@@ -23,8 +23,8 @@ const LoginSchema = z.object({
     .max(14, "아이디는 최대 14자 이하입니다."),
   password: z
     .string()
-    .min(8)
-    .max(20)
+    .min(8, "비밀번호는 최소 8자 이상입니다.")
+    .max(20, "비밀번호는 최대 20자 이하입니다.")
     .regex(
       /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/,
       "비밀번호는 최소8자 최대20자, 숫자, 특수문자를 포함해야 합니다."
@@ -40,10 +40,17 @@ const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
   });
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
-    if (!cameFromQuote) {
-      await signInUser(data.username, data.password, "/account");
-    } else {
-      await signInUser(data.username, data.password, cameFromQuote);
+    try {
+      const result = await signInUser(
+        data.username,
+        data.password,
+        cameFromQuote ? "/easy-quote/result" : "/account"
+      );
+      if (result && result.error) {
+        alert(result.error);
+      }
+    } catch (error) {
+      alert("오류가 발생했습니다, 관리자에게 문의해주세요");
     }
   };
 
