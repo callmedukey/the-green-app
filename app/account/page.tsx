@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import prisma from "@/lib/prisma";
 
-export const dynamic = "force-dyamic";
+export const dynamic = "force-dynamic";
 
 const page = async () => {
   const session = await auth();

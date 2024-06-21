@@ -15,9 +15,7 @@ const AdminBookTime = ({
 
   if (!id) return null;
 
-  const [bookingTime, setBookingTime] = useState<string>(
-    moment().format().substring(0, 16)
-  );
+  const [bookingTime, setBookingTime] = useState<string>("");
 
   const bookTheTime = async (bookingTime: string) => {
     if (
