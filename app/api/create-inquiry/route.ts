@@ -141,9 +141,13 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return Response.json({ message: "문의 등록 되셨습니다" });
+    return Response.json({
+      message: "문의 등록 되셨습니다! 곧 연락드리겠습니다",
+    });
   } catch (error) {
     console.error(error);
-    return Response.json({ message: "문의 등록 오류 입니다" });
+    return Response.json({
+      message: "문의 등록 오류, 유선 문의 부탁드리겠습니다.",
+    });
   }
 }

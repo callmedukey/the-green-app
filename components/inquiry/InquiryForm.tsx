@@ -1,3 +1,4 @@
+"use client";
 import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,6 +15,8 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const InquiryPlanSchema = z.object({
   name: z.string().min(2, { message: "성함을 입력해주세요." }),
@@ -30,10 +33,12 @@ export const InquiryPlanSchema = z.object({
     .max(1000, { message: "1000자 이하로 입력해주세요." }),
   file1: z.any().optional(),
   file2: z.any().optional(),
-  type: z.enum(["CONSTRUCTION", "PLAN", "ETC"]),
+  type: z.enum(["CONSTRUCTION", "PLAN", "ETC"], {
+    required_error: "문의 유형을 선택해주세요",
+  }),
 });
 
-const InquiryPlanForm = () => {
+const InquiryForm = () => {
   const form = useForm<z.infer<typeof InquiryPlanSchema>>({
     resolver: zodResolver(InquiryPlanSchema),
     defaultValues: {
@@ -47,31 +52,30 @@ const InquiryPlanForm = () => {
   const [fileError, setFileError] = useState<string>("");
 
   const onSubmit = async (data: z.infer<typeof InquiryPlanSchema>) => {
-    console.log(data);
     if (data.file1 || data.file2) {
       const file1 = data.file1?.[0];
       const file2 = data.file2?.[0];
 
-      //   if (file1) {
-      //     if (file1.size < 1024 * 1024 * 20) {
-      //       setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
-      //       return;
-      //     }
-      //     if (file1.size > 1024 * 1024 * 40) {
-      //       setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
-      //       return;
-      //     }
-      //   }
-      //   if (file2) {
-      //     if (file2.size < 1024 * 1024 * 20) {
-      //       setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
-      //       return;
-      //     }
-      //     if (file2.size > 1024 * 1024 * 40) {
-      //       setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
-      //       return;
-      //     }
-      //   }
+      if (file1) {
+        if (file1.size < 1024 * 1024 * 20) {
+          setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
+          return;
+        }
+        if (file1.size > 1024 * 1024 * 40) {
+          setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
+          return;
+        }
+      }
+      if (file2) {
+        if (file2.size < 1024 * 1024 * 20) {
+          setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
+          return;
+        }
+        if (file2.size > 1024 * 1024 * 40) {
+          setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
+          return;
+        }
+      }
       try {
         const formData = new FormData();
         formData.append("name", data.name);
@@ -96,6 +100,48 @@ const InquiryPlanForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 py-4">
+        <fieldset>
+          <FormField
+            control={form.control}
+            name="type"
+            render={({ field }) => (
+              <FormItem className="flex gap-4 items-center py-4 border-primary border-y">
+                <FormLabel className="h-full">문의 유형</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex gap-6 items-center !mt-0 mx-auto"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="CONSTRUCTION" />
+                      </FormControl>
+                      <FormLabel className="font-normal">
+                        건축 도면 제출
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="PLAN" />
+                      </FormControl>
+                      <FormLabel className="font-normal">
+                        건춘견적 관련 문의
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="ETC" />
+                      </FormControl>
+                      <FormLabel className="font-normal">기타 문의</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </fieldset>
         <fieldset className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
@@ -195,4 +241,4 @@ const InquiryPlanForm = () => {
   );
 };
 
-export default InquiryPlanForm;
+export default InquiryForm;

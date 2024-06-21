@@ -19,8 +19,8 @@ export const AnimatedTitle = ({
         opacity: 1,
       },
       {
-        duration: 2,
-        delay: stagger(0.2),
+        duration: 2.5,
+        delay: stagger(0.25),
       }
     );
   }, [scope.current]);
