@@ -6,8 +6,10 @@ import generateCode from "@/lib/generateCode";
 import prisma from "@/lib/prisma";
 import saltAndHashPassword from "@/lib/saltAndHashPassword";
 import testValidPassword from "@/lib/tesValidPassword";
+import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
 import { cookies } from "next/headers";
 import { SolapiMessageService } from "solapi";
+import { z } from "zod";
 
 export async function checkUsername({ username }: { username: string }) {
   try {
@@ -432,5 +434,96 @@ export const resetPasswordFinalStep = async ({
     return {
       error: "비밀번호를 확인해주세요.",
     };
+  }
+};
+
+const UpdateUserSchema = z.object({
+  password: z
+    .string()
+    .min(8)
+    .max(20)
+    .regex(
+      /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/,
+      {
+        message:
+          "비밀번호는 최소 8자 이상, 특수 문자 한개 이상, 숫자 한개 이상이어야 합니다.",
+      }
+    ),
+  email: z.string().email({ message: "이메일 형식이 올바르지 않습니다." }),
+  address: z.string({ required_error: "주소를 입력해주세요" }),
+  phone: z.string().refine((val) => testValidPhoneNumber(val), {
+    message: "휴대폰 번호 형식이 올바르지 않습니다.",
+  }),
+});
+
+export const updateUser = async ({
+  phone,
+  email,
+  address,
+  password,
+  username,
+}: {
+  phone: string;
+  email: string;
+  address: string;
+  password: string;
+  username: string;
+}) => {
+  try {
+    const parsed = UpdateUserSchema.parse({
+      phone,
+      email,
+      address,
+      password,
+    });
+
+    const updated = await prisma.user.update({
+      where: {
+        username,
+      },
+      data: {
+        ...parsed,
+      },
+    });
+
+    if (updated) {
+      return {
+        message: "정보 수정 됐습니다",
+      };
+    } else {
+      return {
+        error: "정보 수정이 안됐습니다. 다시 시도해주세요.",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return { error: "잘못된 입력입니다." };
+  }
+};
+
+export const deleteUser = async ({
+  username,
+  password,
+}: {
+  username: string;
+  password: string;
+}) => {
+  try {
+    const deleted = await prisma.user.delete({
+      where: {
+        username,
+        password: await saltAndHashPassword(password),
+      },
+    });
+    if (deleted) {
+      return {
+        message: "회원탈퇴 완료",
+        signOut: true,
+      };
+    } else {
+      return { error: "회원탈퇴 오류, 유선 문의 부탁드립니다" };
+    }
+  } catch (error) {
+    return { error: "회원탈퇴 오류, 유선 문의 부탁드립니다" };
   }
 };

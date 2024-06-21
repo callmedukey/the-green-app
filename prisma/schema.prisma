@@ -27,19 +27,20 @@ model user {
   name      String
   password  String
   role      UserRole @default(USER)
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   inquiry inquiry[]
+  booking           booking[]
 
   passwordResetCode passwordResetCode?
   oneTimeUniqueCode oneTimeUniqueCode?
-  booking           booking[]
 }
 
 model booking {
   id     String @id @default(uuid())
-  user   user   @relation(fields: [userId], references: [id])
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
   name             String
@@ -58,7 +59,7 @@ model booking {
 model inquiry {
   id          String      @id @default(uuid())
   userId      String
-  user        user        @relation(fields: [userId], references: [id])
+  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   inquiryType InquiryType

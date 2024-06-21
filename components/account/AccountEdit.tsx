@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,13 +18,13 @@ import { Button } from "../ui/button";
 import testValidPassword from "@/lib/tesValidPassword";
 import CenterContainer from "../layout/CenterContainer";
 import {
-  checkUsername,
-  registerUser,
-  signInUser,
+  deleteUser,
+  updateUser,
   verifyPhoneNumber,
   verifyPhoneNumberCode,
 } from "@/actions/auth-actions";
 import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
+import { signOutUser } from "@/actions/actions";
 
 declare global {
   interface Window {
@@ -65,47 +64,39 @@ const RegisterSchema = z.object({
           "비밀번호는 최소 8자 이상, 특수 문자 한개 이상, 숫자 한개 이상이어야 합니다.",
       }
     ),
-  detailedAddress: z.string().optional(),
   email: z.string().email({ message: "이메일 형식이 올바르지 않습니다." }),
-  name: z.string().min(2, { message: "성함은 최소 2자 이상입니다." }),
   phone: z.string().refine((val) => testValidPhoneNumber(val), {
     message: "휴대폰 번호 형식이 올바르지 않습니다.",
   }),
-  username: z
-    .string()
-    .min(4, { message: "아이디는 최소 4자 최대 14자 입니다." })
-    .max(14, { message: "아이디는 최소 4자 최대 14자 입니다." }),
   address: z.string({ required_error: "주소를 입력해주세요" }),
 });
 
-const RegisterForm = ({
-  cookieSentTime,
-  cameFromQuote,
+const AccountEdit = ({
   name,
   phone,
+  email,
+  address,
+  username,
 }: {
-  cookieSentTime: string;
-  cameFromQuote: string;
   name: string;
   phone: string;
+  email: string;
+  address: string;
+  username: string;
 }) => {
   const [timer, setTimer] = useState(0);
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [validUsername, setValidUsername] = useState(false);
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      email: "",
+      email: email,
       password: "",
       passwordConfirm: "",
-      name: name,
-      address: "",
-      detailedAddress: "",
+      address: address,
       phone: phone,
       verificationCode: "",
-      username: "",
     },
   });
 
@@ -121,44 +112,29 @@ const RegisterForm = ({
       return alert("휴대폰 인증을 완료해주세요");
     }
 
-    if (!validUsername) {
-      return alert("아이디 중복확인을 해주세요");
-    }
-
     if (!isValidPassword || !testValidPassword(data.password)) {
       return alert("비밀번호를 확인해주세요");
-    }
-
-    if (data.username.includes(" ")) {
-      return alert("아이디에 공백을 포함할 수 없습니다.");
     }
 
     const safeParsed = RegisterSchema.safeParse(data);
 
     if (!safeParsed.success) {
-      return alert("가입 정보를 확인해주세요");
+      return alert("입력 정보를 확인해주세요");
     }
 
     try {
-      const { message, redirectTo, error } = await registerUser({
+      const { message, error } = await updateUser({
         ...data,
-        address: `${data.address} ${data.detailedAddress}`,
+        username,
       });
 
       if (error) {
         return alert(error);
       }
-
-      if (redirectTo) {
-        await signInUser(
-          data.username,
-          data.password,
-          cameFromQuote ? "/easy-quote/result" : redirectTo
-        );
-      }
+      alert(message);
     } catch (error) {
       console.error(error);
-      alert("회원가입 오류");
+      alert("오류가 발생했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -168,15 +144,6 @@ const RegisterForm = ({
       const response = await verifyPhoneNumber({
         phone: form.getValues("phone"),
       });
-      if (!response.error && cookieSentTime) {
-        const timeSent = new Date(cookieSentTime);
-        const dueTime = timeSent.getTime() + Math.floor(1000 * 60 * 3);
-        const diff = dueTime - new Date().getTime();
-        const seconds = Math.floor(diff / 1000);
-
-        setTimer(seconds);
-        return alert(response.message);
-      }
 
       if (response.error) {
         setTimer(0);
@@ -213,20 +180,30 @@ const RegisterForm = ({
     }
   };
 
-  const validateUsername = async () => {
-    try {
-      const { message, error } = await checkUsername({
-        username: form.getValues("username"),
-      });
-      if (error) {
-        return alert(error);
-      }
+  const deleteAccount = async () => {
+    if (!confirm("정말 회원탈퇴 하시겠습니까?")) {
+      return;
+    }
 
+    if (!isVerified) {
+      return alert("휴대폰 인증을 완료해주세요");
+    }
+
+    if (!form.getValues("password") || form.getValues("password").length < 8) {
+      return alert("비밀번호를 확인해주세요");
+    }
+
+    const { message, error, signOut } = await deleteUser({
+      username,
+      password: form.getValues("password"),
+    });
+
+    if (signOut) {
       alert(message);
-      setValidUsername(true);
-    } catch (error) {
-      alert("아이디 확인 오류");
-      setValidUsername(false);
+      await signOutUser();
+    }
+    if (error) {
+      alert(error);
     }
   };
 
@@ -261,21 +238,17 @@ const RegisterForm = ({
     <CenterContainer>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <fieldset className="grid sm:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>성함</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <fieldset className="grid sm:grid-cols-2 gap-4 mt-4">
+            <div>
+              <FormLabel>성함</FormLabel>
+              <Input value={name} disabled />
+            </div>
+            <div>
+              <FormLabel>아이디</FormLabel>
+              <Input value={username} disabled />
+            </div>
           </fieldset>
+
           <fieldset className="grid sm:grid-cols-2 gap-4 mt-4">
             <FormField
               control={form.control}
@@ -286,12 +259,7 @@ const RegisterForm = ({
                     <button
                       type="button"
                       className="text-sm absolute right-0 disabled:text-slate-400 font-bold ring-2 ring-black disabled:ring-0 px-2 top-0.5"
-                      disabled={
-                        !form.getValues("name") ||
-                        !form.getValues("phone") ||
-                        form.getValues("phone").length < 9 ||
-                        timer > 0
-                      }
+                      disabled={form.getValues("phone").length < 9 || timer > 0}
                       onClick={handleVerificationSend}
                     >
                       {!isVerifying
@@ -341,33 +309,6 @@ const RegisterForm = ({
                 </FormItem>
               )}
             />
-          </fieldset>
-          <fieldset className="grid sm:grid-cols-2 gap-4 mt-4">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem className="relative">
-                  <button
-                    type="button"
-                    className="text-sm absolute right-0 disabled:text-slate-400 font-bold ring-2 ring-black disabled:ring-0 px-2 top-0.5"
-                    onClick={validateUsername}
-                    disabled={validUsername || !form.getValues("username")}
-                  >
-                    {validUsername ? "중복확인 완료" : "중복확인"}
-                  </button>
-
-                  <FormLabel>아이디</FormLabel>
-                  <FormControl>
-                    <Input {...field} maxLength={14} disabled={validUsername} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <p className={cn("col-span-2 text-sm text-slate-500")}>
-              아이디는 최소 4자, 최대 14자 이하여야 합니다.
-            </p>
           </fieldset>
           <fieldset className="grid sm:grid-cols-2 gap-4 mt-4 relative">
             <FormField
@@ -429,30 +370,12 @@ const RegisterForm = ({
                 <button
                   type="button"
                   className="text-sm absolute right-0 disabled:text-slate-400 font-bold ring-2 ring-black disabled:ring-0 px-2 top-0.5"
-                  disabled={form.getValues("address").length > 0}
                   onClick={onClickAddr}
                 >
                   주소찾기
                 </button>
 
                 <FormLabel>주소</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    disabled={form.getValues("address").length > 0}
-                    onClick={onClickAddr}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="detailedAddress"
-            render={({ field }) => (
-              <FormItem className="relative mt-6">
-                <FormLabel>상세주소</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -462,10 +385,19 @@ const RegisterForm = ({
           />
           <Button
             type="submit"
-            className="w-full my-6"
+            className="w-full mt-6"
             disabled={!isValidPassword}
           >
-            회원가입
+            수정
+          </Button>
+          <Button
+            type="button"
+            variant={"destructive"}
+            className="w-full mt-4 font-bold"
+            disabled={!isValidPassword}
+            onClick={deleteAccount}
+          >
+            회원탈퇴
           </Button>
         </form>
 
@@ -479,4 +411,4 @@ const RegisterForm = ({
   );
 };
 
-export default RegisterForm;
+export default AccountEdit;
