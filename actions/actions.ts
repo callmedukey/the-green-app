@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, signOut } from "@/auth";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -45,5 +46,7 @@ export const checkQuoteResult = async ({
 };
 
 export const signOutUser = async () => {
+  revalidatePath("/account");
+  revalidatePath("/admin");
   return signOut({ redirectTo: "/login", redirect: true });
 };

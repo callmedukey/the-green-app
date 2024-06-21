@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { attachments, booking, inquiry, user } from "@prisma/client";
+import type { attachments, booking, inquiry, user } from "@prisma/client";
 import AccountEdit from "./AccountEdit";
 
 interface InquiryWithAttachments extends inquiry {

@@ -483,6 +483,7 @@ export const updateUser = async ({
       },
       data: {
         ...parsed,
+        phone: phone.replace(/-/g, ""),
       },
     });
 

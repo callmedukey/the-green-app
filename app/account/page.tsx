@@ -21,10 +21,17 @@ const page = async () => {
       id: session.user.id,
     },
     include: {
-      booking: true,
+      booking: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
       inquiry: {
         include: {
           attachments: true,
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       },
     },
