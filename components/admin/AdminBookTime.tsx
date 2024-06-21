@@ -16,9 +16,7 @@ const AdminBookTime = ({
   if (!id) return null;
 
   const [bookingTime, setBookingTime] = useState<string>(
-    confirmedBooking
-      ? moment(confirmedBooking).format().substring(0, 16)
-      : moment().format().substring(0, 16)
+    moment().format().substring(0, 16)
   );
 
   const bookTheTime = async (bookingTime: string) => {
@@ -40,6 +38,14 @@ const AdminBookTime = ({
 
   return (
     <div className="relative">
+      <span className="text-sm absolute right-16">
+        {confirmedBooking
+          ? `${new Intl.DateTimeFormat("ko-KR", {
+              dateStyle: "short",
+              timeStyle: "short",
+            }).format(confirmedBooking)} 확정됨`
+          : "확정되지 않음"}
+      </span>
       <button
         className="absolute right-0 -top-1 ring-2 ring-black px-2"
         onClick={async (e) => {
