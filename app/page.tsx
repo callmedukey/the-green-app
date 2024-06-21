@@ -34,7 +34,7 @@ export default function Component() {
             alt="landing-image"
             width={500}
             height={500}
-            className="w-full h-full object-cover mt-16 lg:mt-0 max-w-xl"
+            className="w-full h-full object-cover mt-16 lg:mt-0 max-w-xl fade-in"
             priority
           />
         </section>

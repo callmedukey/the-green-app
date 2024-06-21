@@ -61,7 +61,7 @@ const EasyQuoteStepOne = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="">
         <div className="md:grid-cols-2 grid">
           <fieldset className="space-y-4">
             <FormField

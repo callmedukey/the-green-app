@@ -8,7 +8,7 @@ import React from "react";
 const EasyQuotePage = async () => {
   return (
     <MainContainer title="간편 견적계산기" img={BannerImg} imgAlt="건설 배너">
-      <CenterContainer className="px-4">
+      <CenterContainer className="px-4 py-24">
         <EasyQuoteStepOne />
       </CenterContainer>
     </MainContainer>
