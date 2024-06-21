@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import LandingImage from "@/public/landing-image.png";
@@ -13,7 +11,7 @@ export default function Component() {
       <main className="flex-1">
         <section className="w-full py-12 flex items-center flex-col lg:flex-row md:px-8 lg:px-20">
           <div className="container max-w-4xl lg:ml-0 lg:mr-auto">
-            <div className="max-w-2xl space-y-4 text-center lg:text-left">
+            <div className="max-w-2xl space-y-4 text-center lg:text-left mx-auto">
               <AnimatedTitle words="꿈을 현실로 바꾸는 더그린" />
               <p className="text-muted-foreground md:text-xl">
                 더그린은 모든 건축, 인허가 컨설팅, 설계, 조경 필요에 있어 신뢰할
@@ -101,8 +99,15 @@ export default function Component() {
                 연락드립니다
               </p>
 
-              <Button type="submit" className="w-full max-w-sm mx-auto" asChild>
-                <Link href="/contact">문의하기</Link>
+              <Button className="w-full max-w-sm mx-auto" asChild>
+                <Link href="/inquiry">문의하기</Link>
+              </Button>
+              <Button
+                className="w-full max-w-sm mx-auto !mt-4"
+                asChild
+                variant={"outline"}
+              >
+                <Link href="/booking">현장 방문 예약</Link>
               </Button>
             </div>
           </div>

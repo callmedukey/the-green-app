@@ -13,5 +13,5 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/account/:path*", "/easy-quote/result/:path*"],
+  matcher: ["/account/:path*", "/easy-quote/result/:path*", "/contact/:path*"],
 };

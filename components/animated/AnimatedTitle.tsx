@@ -46,7 +46,7 @@ export const AnimatedTitle = ({
   };
 
   return (
-    <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-6xl flex gap-2.5">
+    <h1 className="text-3xl font-bold tracking-tighter mx-auto sm:text-4xl md:text-6xl flex gap-2.5 items-center justify-center lg:justify-start">
       {renderWords()}
     </h1>
   );
