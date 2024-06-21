@@ -1,6 +1,7 @@
 import RegisterForm from "@/components/auth/RegisterForm";
 import MainContainer from "@/components/layout/MainContainer";
 import { cookies } from "next/headers";
+import Banner from "@/public/banner-1.png";
 
 const RegisterPage = () => {
   const cookieStore = cookies();
@@ -10,7 +11,7 @@ const RegisterPage = () => {
   const phone = cookieStore.get("phone")?.value;
 
   return (
-    <MainContainer title="회원가입">
+    <MainContainer title="회원가입" img={Banner}>
       <RegisterForm
         cookieSentTime={cookieLastSent ?? ""}
         cameFromQuote={cameFromQuote ?? ""}

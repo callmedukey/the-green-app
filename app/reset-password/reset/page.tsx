@@ -1,6 +1,7 @@
 import ResetPasswordFormFinal from "@/components/auth/ResetPasswordFormFinal";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
+import Banner from "@/public/banner-2.jpg";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -29,6 +30,7 @@ const ResetPasswordFinalPage = async ({
   return (
     <MainContainer
       title="비밀번호 재설정"
+      img={Banner}
       className="flex items-center justify-start flex-col"
     >
       <CenterContainer className="max-w-sm">
