@@ -33,14 +33,20 @@ const page = async () => {
     return redirect("/login");
   }
 
-  return (
-    <MainContainer title="My 더그린" img={MainBanner} imgAlt="Main Banner">
-      <CenterContainer className="w-full max-w-4xl mx-auto flex flex-col gap-4 items-center justify-center px-4">
-        <AccountTabs userInfo={user} />
-        <SignoutButton />
-      </CenterContainer>
-    </MainContainer>
-  );
+  if (user?.role === "ADMIN") {
+    redirect("/admin");
+  }
+
+  if (user?.role === "USER") {
+    return (
+      <MainContainer title="My 더그린" img={MainBanner} imgAlt="Main Banner">
+        <CenterContainer className="w-full max-w-4xl mx-auto flex flex-col gap-4 items-center justify-center px-4">
+          <AccountTabs userInfo={user} />
+          <SignoutButton />
+        </CenterContainer>
+      </MainContainer>
+    );
+  }
 };
 
 export default page;

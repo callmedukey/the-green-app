@@ -51,7 +51,7 @@ const Header = () => {
 
         <Link
           href="easy-quote"
-          className="px-4 py-2 bg-primary text-white transition-colors duration-300 font-bold rounded-md hover:bg-yellow-500"
+          className="px-4 py-2 bg-primary text-white transition-colors duration-300 font-semibold rounded-md hover:bg-yellow-500"
         >
           7초 간편견적
         </Link>

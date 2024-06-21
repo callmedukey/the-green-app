@@ -1,6 +1,7 @@
 import LoginForm from "@/components/auth/LoginForm";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
+import Banner from "@/public/banner-1.png";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
@@ -12,6 +13,7 @@ const LoginPage = async () => {
   return (
     <MainContainer
       title="로그인"
+      img={Banner}
       className="flex items-center justify-start flex-col"
     >
       <CenterContainer className="max-w-sm">
