@@ -34,6 +34,25 @@ model user {
 
   passwordResetCode passwordResetCode?
   oneTimeUniqueCode oneTimeUniqueCode?
+  booking           booking[]
+}
+
+model booking {
+  id     String @id @default(uuid())
+  user   user   @relation(fields: [userId], references: [id])
+  userId String
+
+  name             String
+  phone            String
+  address          String
+  reason           String
+  pyeong           String
+  planDate         String
+  bookingTime      DateTime
+  confirmedBooking DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model inquiry {

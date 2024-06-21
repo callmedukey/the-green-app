@@ -147,7 +147,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error(error);
     return Response.json({
-      message: "문의 등록 오류, 유선 문의 부탁드리겠습니다.",
+      error: "문의 등록 오류, 유선 문의 부탁드리겠습니다.",
     });
   }
 }

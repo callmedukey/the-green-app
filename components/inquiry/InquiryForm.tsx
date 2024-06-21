@@ -15,8 +15,8 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 export const InquiryPlanSchema = z.object({
   name: z.string().min(2, { message: "성함을 입력해주세요." }),
@@ -91,9 +91,16 @@ const InquiryForm = () => {
           body: formData,
         });
         const response = await res.json();
-        return alert(response.message);
+        if (response.message) {
+          form.reset();
+          return alert(response.message);
+        }
+        if (response.error) {
+          return alert(response.error);
+        }
       } catch (error) {
         console.log(error);
+        alert("문의 등록 오류, 유선 문의 부탁드리겠습니다.");
       }
     }
   };
