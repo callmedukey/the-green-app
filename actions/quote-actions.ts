@@ -2,7 +2,6 @@
 
 import { auth } from "@/auth";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const getQuoteFirstStep = async ({
   name,
@@ -33,14 +32,18 @@ export const getQuoteFirstStep = async ({
       secure: true,
       maxAge: 60 * 60 * 24,
     });
-
+    cookieStore.set("cameFromQuote", "true", {
+      httpOnly: true,
+      secure: true,
+      maxAge: 60 * 60 * 24,
+    });
     const session = auth();
 
     if (!session) {
-      return { redirectTo: "login" };
+      return { redirectTo: "/login" };
     }
 
-    return { redirectTo: "easy-quote/result" };
+    return { redirectTo: "/easy-quote/result" };
   } catch (error) {
     return { error: "오류가 발생했습니다." };
   }
