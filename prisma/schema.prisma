@@ -22,10 +22,10 @@ model user {
   id        String   @id @default(uuid())
   email     String   @unique
   phone     String   @unique
-  username String   @unique
-  address  String
-  name     String
-  password String
+  username  String   @unique
+  address   String
+  name      String
+  password  String
   role      UserRole @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -37,34 +37,33 @@ model user {
 }
 
 model inquiry {
-  id        String   @id @default(uuid())
-  userId    String
-  user      user     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String      @id @default(uuid())
+  userId      String
+  user        user        @relation(fields: [userId], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
   inquiryType InquiryType
 
-  name String
-  phone String
-  email String
-  address String
-  title String
+  name    String
+  phone   String
+  title   String
   content String
-  
+
   attachments attachments[]
 }
 
 model passwordResetCode {
-  id        String   @id @default(uuid())
-  code      String
-  user      user     @relation(fields: [userUsername], references: [username], onDelete: Cascade)
+  id           String   @id @default(uuid())
+  code         String
+  user         user     @relation(fields: [userUsername], references: [username], onDelete: Cascade)
   userUsername String   @unique
-  createdAt DateTime @default(now())
+  createdAt    DateTime @default(now())
 }
 
 model attachments {
   id        String   @id @default(uuid())
   inquiryId String
+  fileName  String?
   inquiry   inquiry  @relation(fields: [inquiryId], references: [id])
   createdAt DateTime @default(now())
 }
@@ -76,8 +75,8 @@ model verificationCode {
 }
 
 model oneTimeUniqueCode {
-  id        String   @id @default(uuid())
-  user      user     @relation(fields: [userUsername], references: [username], onDelete: Cascade)
+  id           String   @id @default(uuid())
+  user         user     @relation(fields: [userUsername], references: [username], onDelete: Cascade)
   userUsername String   @unique
-  createdAt DateTime @default(now())
+  createdAt    DateTime @default(now())
 }
