@@ -1,10 +1,23 @@
 import Link from "next/link";
 
 import { cookies } from "next/headers";
+import prisma from "@/lib/prisma";
+export const dynamic = "force-dynamic";
 
-export default function EasyQuoteResult() {
+export default async function EasyQuoteResult() {
   const cookieStore = cookies();
   const pyeong = cookieStore.get("pyeong")?.value.toLocaleLowerCase();
+  const adminSetting = await prisma.adminSetting.findFirst();
+
+  let price;
+
+  if (Number(pyeong) < 199) {
+    price = Math.floor(Number(pyeong) * Number(adminSetting?.upTo199));
+  } else if (Number(pyeong) < 399) {
+    price = Math.floor(Number(pyeong) * Number(adminSetting?.upTo399));
+  } else {
+    price = Math.floor(Number(pyeong) * Number(adminSetting?.above400));
+  }
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
@@ -43,7 +56,9 @@ export default function EasyQuoteResult() {
               <div className="relative rounded-xl bg-white p-6 shadow-lg sm:p-8 md:p-10 flex flex-col items-center justify-center gap-4 max-h-36 my-auto">
                 <div className="grid gap-4 w-full">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-2xl font-bold">200,000,000원</h2>
+                    <h2 className="text-2xl font-bold">
+                      {price.toLocaleString()}원
+                    </h2>
                     <div className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
                       간편 견적
                     </div>

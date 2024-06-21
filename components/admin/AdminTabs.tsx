@@ -1,7 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { generateInquiryType } from "@/lib/generateInquiryType";
-import type { attachments, booking, inquiry, user } from "@prisma/client";
+import type {
+  adminSetting,
+  attachments,
+  booking,
+  inquiry,
+  user,
+} from "@prisma/client";
 import Link from "next/link";
+import AdminSettingForm from "./AdminSettingForm";
 
 interface InquiryWithAttachmentsAndCount extends inquiry {
   attachments: attachments[];
@@ -14,10 +21,12 @@ const AdminTabs = ({
   users,
   inquiries,
   bookings,
+  adminSetting,
 }: {
   users: user[];
   inquiries: InquiryWithAttachmentsAndCount[];
   bookings: booking[];
+  adminSetting: adminSetting | null;
 }) => {
   return (
     <Tabs defaultValue="inquiries" className="w-full">
@@ -118,7 +127,9 @@ const AdminTabs = ({
           );
         })}
       </TabsContent>
-      <TabsContent value="settings" className=""></TabsContent>
+      <TabsContent value="settings" className="">
+        <AdminSettingForm adminSetting={adminSetting} />
+      </TabsContent>
     </Tabs>
   );
 };

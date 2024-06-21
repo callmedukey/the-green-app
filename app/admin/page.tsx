@@ -24,7 +24,7 @@ const AdminPage = async () => {
     redirect("/login");
   }
 
-  const [users, inquiries, bookings] = await Promise.all([
+  const [users, inquiries, bookings, adminSetting] = await Promise.all([
     prisma.user.findMany({
       orderBy: {
         createdAt: "desc",
@@ -48,11 +48,17 @@ const AdminPage = async () => {
         createdAt: "desc",
       },
     }),
+    prisma.adminSetting.findFirst(),
   ]);
 
   return (
     <CenterContainer className="px-4 py-16 w-full max-w-4xl min-h-screen">
-      <AdminTabs users={users} inquiries={inquiries} bookings={bookings} />
+      <AdminTabs
+        users={users}
+        inquiries={inquiries}
+        bookings={bookings}
+        adminSetting={adminSetting}
+      />
     </CenterContainer>
   );
 };
