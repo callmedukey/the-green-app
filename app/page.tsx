@@ -9,7 +9,7 @@ export default function Component() {
   return (
     <div className="flex flex-col min-h-[100dvh] break-keep">
       <main className="flex-1">
-        <section className="w-full py-12 flex items-center flex-col lg:flex-row md:px-8 lg:px-20">
+        <section className="w-full py-12 flex items-center flex-col lg:flex-row md:px-8 lg:px-20 max-w-[1700px] mx-auto">
           <div className="container max-w-4xl lg:ml-0 lg:mr-auto">
             <div className="max-w-2xl space-y-4 text-center lg:text-left mx-auto">
               <AnimatedTitle words="꿈을 현실로 바꾸는 더그린" />
