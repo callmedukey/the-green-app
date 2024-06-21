@@ -1,5 +1,4 @@
 "use server";
-
 import { auth, signOut } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
