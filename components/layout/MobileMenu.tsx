@@ -22,36 +22,42 @@ const MobileMenu = () => {
           <Link
             href="/about"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
+            onClick={() => setOpen(false)}
           >
             About 더그린
           </Link>
           <Link
             href="/tasks"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
+            onClick={() => setOpen(false)}
           >
             주요 업무
           </Link>
           <Link
             href="/booking"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
+            onClick={() => setOpen(false)}
           >
             현장 방문예약
           </Link>
           <Link
             href="/inquiry"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
+            onClick={() => setOpen(false)}
           >
             문의하기
           </Link>
           <Link
             href="easy-quote"
             className="px-4 py-4 bg-primary text-white transition-colors duration-300 font-bold rounded-md hover:bg-yellow-500"
+            onClick={() => setOpen(false)}
           >
             7초 간편견적
           </Link>
           <Link
             href="/account"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
+            onClick={() => setOpen(false)}
           >
             계정
           </Link>

@@ -11,7 +11,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="h-24 flex items-center justify-center px-12">
+    <header className="h-24 flex items-center justify-center sm:px-12 px-6">
       <Link href="/" className="ml-0 mr-auto">
         <Image src={Logo} alt="logo" width={150} height={100} priority />
       </Link>
