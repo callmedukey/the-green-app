@@ -55,7 +55,19 @@ export const saveAdminSettings = async (
 ) => {
   try {
     const parsed = SettingSchema.parse(data);
-    const findSetting = await prisma.adminSetting.findFirst();
+    const findSetting = await prisma.adminSetting.findMany();
+
+    if (!findSetting?.length) {
+      const created = await prisma.adminSetting.create({
+        data:parsed
+      })
+
+      if (created) {
+        return {
+          message:"설정이 저장되었습니다"
+        }
+      }
+    }
 
     const updated = await prisma.adminSetting.update({
       where: {
