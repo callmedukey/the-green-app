@@ -71,7 +71,7 @@ export const saveAdminSettings = async (
 
     const updated = await prisma.adminSetting.update({
       where: {
-        id: findSetting?.id,
+        id: findSetting[0]?.id,
       },
       data: parsed,
     });
