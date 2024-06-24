@@ -38,13 +38,14 @@ export default async function EasyQuoteResult() {
                 </div>
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Link
-                    href="/inquiry"
+                    href="/booking"
+                    prefetch={false}
                     className="inline-flex h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-white/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   >
                     현장 방문 예약
                   </Link>
                   <Link
-                    href="#"
+                    href="/inquiry"
                     className="inline-flex h-10 items-center justify-center rounded-md border border-white bg-transparent px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white hover:text-[hsl(110,24%,62%)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
