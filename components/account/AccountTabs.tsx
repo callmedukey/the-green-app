@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { attachments, booking, inquiry, user } from "@prisma/client";
 import AccountEdit from "./AccountEdit";
 import { format } from "date-fns";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface InquiryWithAttachments extends inquiry {
   attachments: attachments[];
@@ -17,14 +17,23 @@ interface UserWithBookingAndInquiry extends user {
 
 export function AccountTabs({
   userInfo,
+  initialState,
 }: {
   userInfo: UserWithBookingAndInquiry;
+  initialState: string;
 }) {
-  const searchParams = useSearchParams();
-  const state = searchParams.get("state") || "inquiries";
-
+  const searchparams = useSearchParams();
+  const tab = searchparams.get("state");
+  const router = useRouter();
   return (
-    <Tabs defaultValue={state || "inquiries"} className="w-full" value={state}>
+    <Tabs
+      defaultValue={initialState}
+      className="w-full"
+      value={tab || "inquiries"}
+      onValueChange={(value) => {
+        router.push(`/account?state=${value}`);
+      }}
+    >
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="inquiries">문의 내역</TabsTrigger>
         <TabsTrigger value="bookings">방문 예약 상황</TabsTrigger>

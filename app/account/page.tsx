@@ -11,8 +11,8 @@ import prisma from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 const page = async ({ searchParams }: { searchParams: { state: string } }) => {
+  const state = searchParams.state;
   const session = await auth();
-
   if (!session?.user) {
     redirect("/login");
   }
@@ -49,7 +49,7 @@ const page = async ({ searchParams }: { searchParams: { state: string } }) => {
     return (
       <MainContainer title="My 더그린" img={MainBanner} imgAlt="Main Banner">
         <CenterContainer className="w-full max-w-4xl mx-auto flex flex-col gap-4 items-center justify-center px-4">
-          <AccountTabs userInfo={user} />
+          <AccountTabs userInfo={user} initialState={state} />
         </CenterContainer>
       </MainContainer>
     );

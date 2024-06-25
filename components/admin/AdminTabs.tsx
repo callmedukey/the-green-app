@@ -97,7 +97,10 @@ const AdminTabs = ({
           );
         })}
       </TabsContent>
-      <TabsContent value="account" className="text-sm sm:text-base">
+      <TabsContent
+        value="account"
+        className="max-h-[600px] h-[600px] overflow-y-scroll divide-y-2 text-sm sm:text-base"
+      >
         <div className="grid h-12 items-center gap-2 grid-cols-4 text-center">
           <div className="w-full">관리단계</div>
           <div className="w-full">성함</div>
@@ -117,7 +120,10 @@ const AdminTabs = ({
           );
         })}
       </TabsContent>
-      <TabsContent value="settings" className="">
+      <TabsContent
+        value="settings"
+        className="max-h-[600px] h-[600px] overflow-y-scroll divide-y-2 text-sm sm:text-base"
+      >
         <AdminSettingForm adminSetting={adminSetting} />
       </TabsContent>
     </Tabs>
