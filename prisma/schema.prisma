@@ -18,6 +18,15 @@ enum InquiryType {
   ETC
 }
 
+enum UserStatus {
+  REGISTERED
+  VISIT
+  CONSULTATION
+  CONTRACT
+  SIGNED
+  START
+}
+
 model user {
   id       String   @id @default(uuid())
   email    String   @unique
@@ -27,6 +36,8 @@ model user {
   name     String
   password String
   role     UserRole @default(USER)
+
+  userStatus UserStatus @default(REGISTERED)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -54,14 +65,18 @@ model booking {
   user   user   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
-  name             String
-  phone            String
-  address          String
-  reason           String
-  pyeong           String
-  planDate         String
-  bookingTime      DateTime
-  confirmedBooking DateTime?
+  name     String
+  phone    String
+  address  String
+  reason   String
+  pyeong   String
+  planDate String
+
+  bookingDate DateTime
+  bookingTime String
+
+  confirmedTime        String?
+  confirmedBookingDate DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

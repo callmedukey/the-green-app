@@ -5,7 +5,7 @@ import InquiryForm from "@/components/inquiry/InquiryForm";
 const InquiryPage = () => {
   return (
     <MainContainer title="문의하기" img={Banner3} imgAlt="배너">
-      <CenterContainer className="max-w-xl">
+      <CenterContainer className="max-w-xl px-4">
         <InquiryForm />
       </CenterContainer>
     </MainContainer>

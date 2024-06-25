@@ -153,7 +153,7 @@ const RegisterForm = ({
         await signInUser(
           data.username,
           data.password,
-          cameFromQuote ? "/easy-quote/result" : redirectTo
+          cameFromQuote ? "/easy-quote/result#main" : redirectTo
         );
       }
     } catch (error) {

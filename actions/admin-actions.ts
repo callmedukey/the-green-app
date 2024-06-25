@@ -2,14 +2,19 @@
 import prisma from "@/lib/prisma";
 import { z } from "zod";
 
-export const bookTime = async (bookingId: string, newDate: string) => {
+export const bookTime = async (
+  bookingId: string,
+  newDate: string,
+  newTime: string
+) => {
   try {
     const booked = await prisma.booking.update({
       where: {
         id: bookingId,
       },
       data: {
-        confirmedBooking: new Date(newDate),
+        confirmedBookingDate: new Date(newDate),
+        confirmedTime: newTime,
       },
     });
 
@@ -59,13 +64,13 @@ export const saveAdminSettings = async (
 
     if (!findSetting?.length) {
       const created = await prisma.adminSetting.create({
-        data:parsed
-      })
+        data: parsed,
+      });
 
       if (created) {
         return {
-          message:"설정이 저장되었습니다"
-        }
+          message: "설정이 저장되었습니다",
+        };
       }
     }
 

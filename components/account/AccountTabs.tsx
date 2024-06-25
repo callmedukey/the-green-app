@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { attachments, booking, inquiry, user } from "@prisma/client";
 import AccountEdit from "./AccountEdit";
+import { format } from "date-fns";
 
 interface InquiryWithAttachments extends inquiry {
   attachments: attachments[];
@@ -15,11 +16,13 @@ interface UserWithBookingAndInquiry extends user {
 
 export function AccountTabs({
   userInfo,
+  state,
 }: {
   userInfo: UserWithBookingAndInquiry;
+  state: string;
 }) {
   return (
-    <Tabs defaultValue="inquiries" className="w-full">
+    <Tabs defaultValue={state || "inquiries"} className="w-full">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="inquiries">문의 내역</TabsTrigger>
         <TabsTrigger value="bookings">방문 예약 상황</TabsTrigger>
@@ -55,20 +58,19 @@ export function AccountTabs({
               className="grid h-12 items-center grid-cols-2 text-center"
             >
               <div className="w-full">
-                신청일자:{" "}
-                {new Intl.DateTimeFormat("ko-KR", {
-                  dateStyle: "short",
-                  timeStyle: "short",
-                }).format(booking.createdAt)}
+                신청일자: {format(booking.bookingDate, "yyyy-MM-dd")}{" "}
+                {booking.bookingTime}
               </div>
               <div className="w-full">
-                {booking.confirmedBooking &&
+                {booking.confirmedBookingDate &&
+                  booking.confirmedTime &&
                   "확정일자: " +
-                    new Intl.DateTimeFormat("ko-KR", {
-                      dateStyle: "short",
-                      timeStyle: "short",
-                    }).format(booking.createdAt)}
-                {!booking.confirmedBooking && "미확정"}
+                    format(booking.confirmedBookingDate, "yyyy-MM-dd") +
+                    " " +
+                    booking.confirmedTime}
+                {!booking.confirmedBookingDate &&
+                  !booking.confirmedTime &&
+                  "미확정"}
               </div>
             </div>
           );

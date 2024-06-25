@@ -1,8 +1,8 @@
 "use server";
 
 import { auth } from "@/auth";
-import { booking } from "@prisma/client";
 import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function createBooking(bookingDetails: {
   name: string;
@@ -11,7 +11,8 @@ export async function createBooking(bookingDetails: {
   reason: string;
   pyeong: number;
   planDate: string;
-  bookingTime: Date;
+  bookingTime: string;
+  bookingDate: Date;
 }) {
   try {
     const session = await auth();
@@ -27,6 +28,7 @@ export async function createBooking(bookingDetails: {
         pyeong: bookingDetails.pyeong + "",
         planDate: bookingDetails.planDate,
         bookingTime: bookingDetails.bookingTime,
+        bookingDate: bookingDetails.bookingDate,
         user: {
           connect: {
             id: session.user.id,
@@ -35,6 +37,7 @@ export async function createBooking(bookingDetails: {
       },
     });
 
+    revalidatePath("/account");
     if (booked) {
       return { message: "예약 신청이 성공적으로 완료되었습니다." };
     }

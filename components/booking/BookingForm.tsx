@@ -1,8 +1,16 @@
 "use client";
 import { z } from "zod";
+import { ko } from "date-fns/locale/ko";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
+import { Calendar } from "@/components/ui/calendar";
+import { Calendar as CalendarIcon } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -17,6 +25,11 @@ import { Textarea } from "../ui/textarea";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import Script from "next/script";
 import { createBooking } from "@/actions/booking-action";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { format } from "date-fns";
+import { Label } from "../ui/label";
+import { validateTimeFormat } from "@/lib/validateTimeFormat";
 
 declare global {
   interface Window {
@@ -37,29 +50,37 @@ const bookingSchema = z.object({
     .refine((val) => testValidPhoneNumber(val), {
       message: "올바른 전화번호를 입력해주세요.",
     }),
-  bookingTime: z.string({ message: "날짜를 선택해주세요." }),
   planDate: z.enum(["3months", "6months", "12months", "unknown"], {
     required_error: "건축 시기를 선택해주세요",
   }),
   pyeong: z.number().min(1, { message: "평수를 입력해주세요." }),
   address: z.string().min(1, { message: "주소를 입력해주세요." }),
+  addressDetail: z.string().min(1, { message: "상세주소를 입력해주세요." }),
   reason: z
     .string()
     .min(1, { message: "신청 사유를 입력해주세요." })
     .max(1000, { message: "1000자 이하로 입력해주세요." }),
+  bookingTime: z
+    .string()
+    .min(5, { message: "예약시간은 00:00 형식으로 입력해주세요." })
+    .max(5, { message: "예약시간은 00:00 형식으로 입력해주세요." })
+    .refine((val) => validateTimeFormat(val), {
+      message: "예약시간은 00:00 형식으로 입력해주세요.",
+    }),
 });
 
 const BookingForm = () => {
+  const [date, setDate] = useState<Date | undefined>();
   const form = useForm<z.infer<typeof bookingSchema>>({
     resolver: zodResolver(bookingSchema),
     defaultValues: {
       name: "",
       phone: "",
-      bookingTime: "",
       planDate: "3months",
       pyeong: 0,
       address: "",
       reason: "",
+      bookingTime: "",
     },
   });
 
@@ -75,11 +96,17 @@ const BookingForm = () => {
   };
 
   const onSubmit = async (data: z.infer<typeof bookingSchema>) => {
+    if (!date) {
+      return alert("날짜를 선택해주세요.");
+    }
+    if (date < new Date()) {
+      return alert("날짜를 올바르게 선택해주세요.");
+    }
     try {
-      console.log(data);
       const result = await createBooking({
         ...data,
-        bookingTime: new Date(data.bookingTime),
+        bookingDate: date ? new Date(date) : new Date(),
+        address: `${data.address} ${data.addressDetail}`,
       });
       if (result.message) {
         form.reset();
@@ -126,23 +153,49 @@ const BookingForm = () => {
           />
         </fieldset>
         <fieldset className="grid grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="bookingTime"
-            render={({ field }) => (
-              <FormItem className="relative">
-                <FormLabel>희망방문일시</FormLabel>
-                <FormControl>
-                  <input
-                    type="datetime-local"
-                    {...form.register("bookingTime")}
-                    className="h-10 w-full rounded-md border border-input bg-background p-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="space-y-2">
+            <Label>현장방문일</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className={cn(
+                    "w-full justify-start text-left font-normal",
+                    !date && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {date ? format(date, "yyyy-MM-dd") : <span>날짜 선택</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  initialFocus
+                  mode="single"
+                  locale={ko}
+                  selected={date}
+                  onSelect={setDate}
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+          <div className="space-y-2">
+            <FormField
+              control={form.control}
+              name="bookingTime"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormLabel>방문시간</FormLabel>
+                  <FormControl>
+                    <Input {...field} maxLength={5} placeholder="예) 15:00" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </fieldset>
+        <fieldset className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="pyeong"
@@ -184,6 +237,19 @@ const BookingForm = () => {
                       : onClickAddr
                   }
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="addressDetail"
+          render={({ field }) => (
+            <FormItem className="relative mt-6">
+              <FormLabel>상세주소</FormLabel>
+              <FormControl>
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

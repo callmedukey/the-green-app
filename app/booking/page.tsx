@@ -7,7 +7,7 @@ import BookingForm from "@/components/booking/BookingForm";
 const page = () => {
   return (
     <MainContainer title="현장 방문 예약" img={Banner3} imgAlt="배너">
-      <CenterContainer className="max-w-xl">
+      <CenterContainer className="max-w-xl px-4">
         <h2 className="text-center font-bold text-2xl mb-12">
           현장 방문 요청합니다
         </h2>

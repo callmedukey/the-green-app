@@ -59,8 +59,37 @@ const MobileMenu = () => {
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
             onClick={() => setOpen(false)}
           >
-            계정
+            마이페이지
           </Link>
+          <ul className="pl-4 !-mt-4 space-y-4">
+            <li>
+              <Link
+                href="/account?state=account"
+                className="p-4 hover:bg-gray-200 transition-colors duration-300"
+                onClick={() => setOpen(false)}
+              >
+                나의 정보
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/account?state=bookings"
+                className="p-4 hover:bg-gray-200 transition-colors duration-300"
+                onClick={() => setOpen(false)}
+              >
+                예약 내역
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/account?state=inquiries"
+                className="p-4 hover:bg-gray-200 transition-colors duration-300"
+                onClick={() => setOpen(false)}
+              >
+                문의 내역
+              </Link>
+            </li>
+          </ul>
         </nav>
       </DrawerContent>
     </Drawer>

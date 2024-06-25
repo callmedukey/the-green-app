@@ -60,20 +60,12 @@ const InquiryForm = () => {
       const file2 = data.file2?.[0];
 
       if (file1) {
-        if (file1.size < 1024 * 1024 * 20) {
-          setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
-          return;
-        }
         if (file1.size > 1024 * 1024 * 40) {
           setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
           return;
         }
       }
       if (file2) {
-        if (file2.size < 1024 * 1024 * 20) {
-          setFileError("파일 용량은 최소 20mb로 부탁드립니다.");
-          return;
-        }
         if (file2.size > 1024 * 1024 * 40) {
           setFileError("파일 용량은 최대 40mb로 부탁드립니다.");
           return;
@@ -109,21 +101,21 @@ const InquiryForm = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 py-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 py-4 ">
         <fieldset>
           <FormField
             control={form.control}
             name="type"
             render={({ field }) => (
-              <FormItem className="flex gap-4 items-center py-4 border-primary border-y">
+              <FormItem className="flex items-center py-4 border-primary border-y flex-col md:flex-row gap-2 md:gap-4">
                 <FormLabel className="h-full">문의 유형</FormLabel>
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className="flex gap-6 items-center !mt-0 mx-auto"
+                    className="flex md:gap-6 items-center !mt-0 mx-auto [@media(max-width:365px)]:grid [@media(max-width:365px)]:grid-cols-2"
                   >
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center space-x-2 space-y-0">
                       <FormControl>
                         <RadioGroupItem value="CONSTRUCTION" />
                       </FormControl>
@@ -131,7 +123,7 @@ const InquiryForm = () => {
                         건축 도면 제출
                       </FormLabel>
                     </FormItem>
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center space-x-2 space-y-0 sm:space-x-3">
                       <FormControl>
                         <RadioGroupItem value="PLAN" />
                       </FormControl>
@@ -139,7 +131,7 @@ const InquiryForm = () => {
                         건춘견적 관련 문의
                       </FormLabel>
                     </FormItem>
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center space-x-2 space-y-0 sm:space-x-3">
                       <FormControl>
                         <RadioGroupItem value="ETC" />
                       </FormControl>
@@ -213,33 +205,43 @@ const InquiryForm = () => {
             render={({ field }) => (
               <FormItem className="relative">
                 <FormControl>
-                  <Input
-                    {...form.register("file1")}
-                    type="file"
-                    accept={
-                      "application/pdf, application/dwg, application/x-dwg, application/acad"
-                    }
-                  />
+                  <Input {...form.register("file1")} type="file" />
                 </FormControl>
+                {form.getValues("file1") && (
+                  <Button
+                    variant={"destructive"}
+                    className="w-full"
+                    onClick={() => {
+                      form.resetField("file1");
+                    }}
+                  >
+                    삭제
+                  </Button>
+                )}
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="file1"
+            name="file2"
             render={({ field }) => (
               <FormItem className="relative">
                 <FormControl>
-                  <Input
-                    {...form.register("file2")}
-                    type="file"
-                    accept={
-                      "application/pdf, application/dwg, application/x-dwg, application/acad"
-                    }
-                  />
+                  <Input {...form.register("file2")} type="file" />
                 </FormControl>
                 <FormMessage />
+                {form.getValues("file2") && (
+                  <Button
+                    variant={"destructive"}
+                    className="w-full"
+                    onClick={() => {
+                      form.resetField("file2");
+                    }}
+                  >
+                    삭제
+                  </Button>
+                )}
               </FormItem>
             )}
           />
