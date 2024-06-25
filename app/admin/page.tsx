@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import CenterContainer from "@/components/layout/CenterContainer";
 import AdminTabs from "@/components/admin/AdminTabs";
+import SignoutButton from "@/components/auth/SignoutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -52,13 +53,14 @@ const AdminPage = async () => {
   ]);
 
   return (
-    <CenterContainer className="px-4 py-16 w-full max-w-4xl min-h-screen">
+    <CenterContainer className="px-4 pt-16 w-full max-w-4xl min-h-screen">
       <AdminTabs
         users={users}
         inquiries={inquiries}
         bookings={bookings}
         adminSetting={adminSetting}
       />
+      <SignoutButton className="mx-auto max-w-full" />
     </CenterContainer>
   );
 };
