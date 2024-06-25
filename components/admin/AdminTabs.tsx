@@ -105,15 +105,14 @@ const AdminTabs = ({
         </div>
         {users.map((user) => {
           return (
-            <div
-              key={user.id}
-              className="grid h-12 items-center gap-2 grid-cols-4 text-center text-sm sm:text-base"
-            >
-              <div>{user.username}</div>
-              <div>{user.name}</div>
-              <div>{user.phone}</div>
-              <div>{format(user.createdAt, "yyyy-MM-dd HH:mm")}</div>
-            </div>
+            <Link href={`/admin/user?id=${user.id}`} key={user.id}>
+              <div className="grid h-12 items-center gap-2 grid-cols-4 text-center text-sm sm:text-base">
+                <div>{user.username}</div>
+                <div>{user.name}</div>
+                <div>{user.phone}</div>
+                <div>{format(user.createdAt, "yyyy-MM-dd HH:mm")}</div>
+              </div>
+            </Link>
           );
         })}
       </TabsContent>

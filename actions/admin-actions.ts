@@ -90,3 +90,13 @@ export const saveAdminSettings = async (
     return { error: "설정 저장에 실패했습니다" };
   }
 };
+
+export const getUserById = async (id: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  return user;
+};
