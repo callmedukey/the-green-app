@@ -1,10 +1,7 @@
-"use client";
 import { Menu } from "lucide-react";
-import Account from "@/public/account.svg";
 import Link from "next/link";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
-import Image from "next/image";
 
 const MobileMenu = () => {
   const [open, setOpen] = useState(false);
@@ -48,7 +45,7 @@ const MobileMenu = () => {
             문의하기
           </Link>
           <Link
-            href="easy-quote"
+            href="/easy-quote"
             className="px-4 py-4 bg-primary text-white transition-colors duration-300 font-bold rounded-md hover:bg-yellow-500"
             onClick={() => setOpen(false)}
           >

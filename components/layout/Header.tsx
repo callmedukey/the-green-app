@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Logo from "@/public/logo.svg";
 import Account from "@/public/account.svg";
@@ -50,7 +51,7 @@ const Header = () => {
         </Popover>
 
         <Link
-          href="easy-quote"
+          href="/easy-quote"
           className="px-4 py-2 bg-primary text-white transition-colors duration-300 font-semibold rounded-md hover:bg-yellow-500"
         >
           7초 간편견적

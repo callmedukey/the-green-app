@@ -49,3 +49,8 @@ export const signOutUser = async () => {
   revalidatePath("/admin");
   return signOut({ redirectTo: "/login", redirect: true });
 };
+
+export const revalidatePaths = () => {
+  revalidatePath("/account");
+  revalidatePath("/easy-quote/result");
+};

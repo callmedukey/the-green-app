@@ -43,9 +43,9 @@ const RegisterSchema = z.object({
     .string()
     .min(8)
     .max(20)
-    .regex(
-      /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/
-    ),
+    .refine((val) => testValidPassword(val), {
+      message: "비밀번호는 최소 8자 이상, 숫자 한개 이상이어야 합니다.",
+    }),
   verificationCode: z
     .string()
     .min(6, {
@@ -58,7 +58,7 @@ const RegisterSchema = z.object({
     .string()
     .min(8)
     .max(20)
-    .regex(/^(?=.*\d)[A-Za-z\d]{8,20}$/, {
+    .refine((val) => testValidPassword(val), {
       message: "비밀번호는 최소 8자 이상, 숫자 한개 이상이어야 합니다.",
     }),
   detailedAddress: z.string().optional(),

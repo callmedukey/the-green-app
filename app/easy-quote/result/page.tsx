@@ -22,14 +22,14 @@ export default async function EasyQuoteResult() {
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
         <section
-          className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary"
+          className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary scroll-mt-24"
           id="main"
         >
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_550px] lg:gap-12 xl:grid-cols-[1fr_650px]">
               <div className="flex flex-col justify-center space-y-6">
                 <div className="space-y-4">
-                  <h1 className="text-2xl font-bold tracking-tighter text-white sm:text-4xl xl:text-5xl">
+                  <h1 className="text-2xl font-bold tracking-tighter text-white sm:text-4xl xl:text-5xl ">
                     견적 결과
                   </h1>
                   <p className="max-w-[600px] text-white/90 md:text-xl">

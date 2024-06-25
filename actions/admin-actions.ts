@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export const bookTime = async (
   bookingId: string,
-  newDate: string,
+  newDate: Date,
   newTime: string
 ) => {
   try {

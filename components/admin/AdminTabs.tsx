@@ -9,6 +9,7 @@ import type {
 } from "@prisma/client";
 import Link from "next/link";
 import AdminSettingForm from "./AdminSettingForm";
+import { format } from "date-fns";
 
 interface InquiryWithAttachmentsAndCount extends inquiry {
   attachments: attachments[];
@@ -89,11 +90,9 @@ const AdminTabs = ({
                   }).format(booking.createdAt)}
                 </div>
                 <div className="w-full">
-                  {booking.confirmedBooking
-                    ? new Intl.DateTimeFormat("ko-KR", {
-                        dateStyle: "short",
-                        timeStyle: "short",
-                      }).format(booking.confirmedBooking)
+                  {booking.confirmedBookingDate && booking.confirmedTime
+                    ? format(booking.confirmedBookingDate, "yyyy-MM-dd") +
+                      ` ${booking.confirmedTime}`
                     : "미확정"}
                 </div>
               </div>

@@ -16,6 +16,7 @@ const page = async ({ searchParams }: { searchParams: { state: string } }) => {
   if (!session?.user) {
     redirect("/login");
   }
+
   const user = await prisma.user.findUnique({
     where: {
       id: session.user.id,
@@ -48,8 +49,7 @@ const page = async ({ searchParams }: { searchParams: { state: string } }) => {
     return (
       <MainContainer title="My 더그린" img={MainBanner} imgAlt="Main Banner">
         <CenterContainer className="w-full max-w-4xl mx-auto flex flex-col gap-4 items-center justify-center px-4">
-          <AccountTabs userInfo={user} state={searchParams.state} />
-          <SignoutButton />
+          <AccountTabs userInfo={user} />
         </CenterContainer>
       </MainContainer>
     );

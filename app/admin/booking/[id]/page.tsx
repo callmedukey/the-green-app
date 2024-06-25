@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import AdminBookTime from "@/components/admin/AdminBookTime";
 import { type BuildingDate, generatePlanDate } from "@/lib/generatePlanDate";
+import { format } from "date-fns";
 
 export const dynamic = "force-dynamic";
 
@@ -62,19 +63,17 @@ const AdminSingleBooking = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div>
+        <div className="">
           <Label>희망방문일시</Label>
-          <Input
-            value={new Intl.DateTimeFormat("ko-KR", {
-              dateStyle: "full",
-              timeStyle: "short",
-            }).format(booking.bookingTime)}
-            className="disabled:cursor-default disabled:opacity-1"
-            disabled
-          />
+          <div className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            {format(booking.bookingDate, "yyyy-MM-dd")} {booking.bookingTime}
+          </div>
         </div>
-        <AdminBookTime confirmedBooking={booking?.confirmedBooking} />
       </div>
+      <AdminBookTime
+        confirmedBookingDate={booking?.confirmedBookingDate}
+        confirmedBookingTime={booking?.bookingTime}
+      />
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label>건축시기</Label>
