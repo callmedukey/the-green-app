@@ -265,7 +265,7 @@ const BookingForm = () => {
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex gap-6 items-center !mt-0 mx-auto"
+                  className="flex gap-6 items-center !mt-0 mx-auto [@media(max-width:400px)]:grid [@media(max-width:400px)]:grid-cols-2"
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>

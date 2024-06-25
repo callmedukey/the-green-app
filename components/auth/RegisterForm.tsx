@@ -58,13 +58,9 @@ const RegisterSchema = z.object({
     .string()
     .min(8)
     .max(20)
-    .regex(
-      /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/,
-      {
-        message:
-          "비밀번호는 최소 8자 이상, 특수 문자 한개 이상, 숫자 한개 이상이어야 합니다.",
-      }
-    ),
+    .regex(/^(?=.*\d)[A-Za-z\d]{8,20}$/, {
+      message: "비밀번호는 최소 8자 이상, 숫자 한개 이상이어야 합니다.",
+    }),
   detailedAddress: z.string().optional(),
   email: z.string().email({ message: "이메일 형식이 올바르지 않습니다." }),
   name: z.string().min(2, { message: "성함은 최소 2자 이상입니다." }),

@@ -16,7 +16,7 @@ const LoginPage = async () => {
       img={Banner}
       className="flex items-center justify-start flex-col"
     >
-      <CenterContainer className="max-w-sm min-h-[60vh] pt-24 flex flex-col">
+      <CenterContainer className="max-w-sm min-h-[60vh] pt-24 flex flex-col px-4">
         <LoginForm cameFromQuote={cameFromQuote} />
       </CenterContainer>
     </MainContainer>

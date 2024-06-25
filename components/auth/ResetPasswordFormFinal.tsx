@@ -23,14 +23,14 @@ const ResetSchema = z.object({
     .min(8, "비밀번호는 최소 8자 이상입니다.")
     .max(20, "비밀번호는 최대 20자 이하입니다.")
     .refine((value) => testValidPassword(value), {
-      message: "비밀번호는 영문, 숫자, 특수문자를 포함해야 합니다.",
+      message: "비밀번호는 영문, 숫자를 포함해야 합니다.",
     }),
   confirmPassword: z
     .string()
     .min(8, "비밀번호는 최소 8자 이상입니다.")
     .max(20, "비밀번호는 최대 20자 이하입니다.")
     .refine((value) => testValidPassword(value), {
-      message: "비밀번호는 영문, 숫자, 특수문자를 포함해야 합니다.",
+      message: "비밀번호는 영문, 숫자를 포함해야 합니다.",
     }),
 });
 

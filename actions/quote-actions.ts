@@ -43,7 +43,7 @@ export const getQuoteFirstStep = async ({
       return { redirectTo: "/login" };
     }
 
-    return { redirectTo: "/easy-quote/result" };
+    return { redirectTo: "/easy-quote/result#main" };
   } catch (error) {
     return { error: "오류가 발생했습니다." };
   }

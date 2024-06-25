@@ -207,7 +207,7 @@ const InquiryForm = () => {
                 <FormControl>
                   <Input {...form.register("file1")} type="file" />
                 </FormControl>
-                {form.getValues("file1") && (
+                {form.getValues("file1") && form.getValues("file1")[0] && (
                   <Button
                     variant={"destructive"}
                     className="w-full"
@@ -231,7 +231,7 @@ const InquiryForm = () => {
                   <Input {...form.register("file2")} type="file" />
                 </FormControl>
                 <FormMessage />
-                {form.getValues("file2") && (
+                {form.getValues("file2") && form.getValues("file2")[0] && (
                   <Button
                     variant={"destructive"}
                     className="w-full"
