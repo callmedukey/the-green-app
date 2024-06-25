@@ -256,7 +256,7 @@ const RegisterForm = ({
   return (
     <CenterContainer>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="px-4">
           <fieldset className="grid sm:grid-cols-2 gap-4">
             <FormField
               control={form.control}
@@ -400,8 +400,7 @@ const RegisterForm = ({
                   "text-red-500"
               )}
             >
-              비밀번호는 최소 8자 이상, 특수 문자 한개 이상, 숫자 한개
-              이상이어야 합니다.
+              비밀번호는 최소 8자 이상, 숫자 한개 이상이어야 합니다.
             </p>
           </fieldset>
           <FormField
