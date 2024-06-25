@@ -10,6 +10,7 @@ import type {
 import Link from "next/link";
 import AdminSettingForm from "./AdminSettingForm";
 import { format } from "date-fns";
+import { parseUserStatus } from "@/lib/parseUserStatus";
 
 interface InquiryWithAttachmentsAndCount extends inquiry {
   attachments: attachments[];
@@ -98,7 +99,7 @@ const AdminTabs = ({
       </TabsContent>
       <TabsContent value="account" className="text-sm sm:text-base">
         <div className="grid h-12 items-center gap-2 grid-cols-4 text-center">
-          <div className="w-full">아이디</div>
+          <div className="w-full">관리단계</div>
           <div className="w-full">성함</div>
           <div className="w-full">연락처</div>
           <div className="w-full">가입일자</div>
@@ -107,7 +108,7 @@ const AdminTabs = ({
           return (
             <Link href={`/admin/user?id=${user.id}`} key={user.id}>
               <div className="grid h-12 items-center gap-2 grid-cols-4 text-center text-sm sm:text-base">
-                <div>{user.username}</div>
+                <div>{parseUserStatus(user.userStatus)}</div>
                 <div>{user.name}</div>
                 <div>{user.phone}</div>
                 <div>{format(user.createdAt, "yyyy-MM-dd HH:mm")}</div>

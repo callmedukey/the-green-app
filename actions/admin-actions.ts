@@ -1,5 +1,6 @@
 "use server";
 import prisma from "@/lib/prisma";
+import { UserStatus } from "@prisma/client";
 import { z } from "zod";
 
 export const bookTime = async (
@@ -99,4 +100,31 @@ export const getUserById = async (id: string) => {
   });
 
   return user;
+};
+
+export const saveUserStatus = async ({
+  id,
+  status,
+}: {
+  id: string;
+  status: UserStatus;
+}) => {
+  try {
+    const updated = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        userStatus: status,
+      },
+    });
+
+    if (updated) {
+      return { message: "관리 단계가 업데이트되었습니다" };
+    }
+    return { error: "관리 단계 업데이트에 실패했습니다" };
+  } catch (error) {
+    console.error(error);
+    return { error: "관리 단계 업데이트에 실패했습니다" };
+  }
 };

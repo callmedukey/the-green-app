@@ -1,14 +1,12 @@
 import { getUserById } from "@/actions/admin-actions";
+import UserStatusControlForm from "@/components/admin/UserStatusControlForm";
 import CenterContainer from "@/components/layout/CenterContainer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { format } from "date-fns";
 import { redirect } from "next/navigation";
 
-
 export const dynamic = "force-dynamic";
-
-
 
 const AdminUserControlPage = async ({
   searchParams,
@@ -29,6 +27,7 @@ const AdminUserControlPage = async ({
 
   return (
     <CenterContainer className="max-w-4xl px-4 py-16 flex flex-col gap-4 min-h-[100dvh]">
+      <UserStatusControlForm userId={user.id} userStatus={user.userStatus} />
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label>성함</Label>
