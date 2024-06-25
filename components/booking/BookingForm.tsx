@@ -79,6 +79,7 @@ const BookingForm = () => {
       planDate: "3months",
       pyeong: 0,
       address: "",
+      addressDetail: "",
       reason: "",
       bookingTime: "",
     },
@@ -110,6 +111,7 @@ const BookingForm = () => {
       });
       if (result.message) {
         form.reset();
+        setDate(undefined);
         return alert(result.message);
       }
 
