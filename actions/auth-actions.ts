@@ -55,7 +55,7 @@ export const verifyPhoneNumber = async ({ phone }: { phone: string }) => {
 
     if (foundCookie) {
       return {
-        message: "인증번호 발송 하진지 3분이 되지 않았습니다",
+        message: "인증번호 발송 하진지 1분이 되지 않았습니다",
       };
     }
 
@@ -74,7 +74,7 @@ export const verifyPhoneNumber = async ({ phone }: { phone: string }) => {
       name: "verifying-number",
       value: new Date().toString(),
       httpOnly: true,
-      maxAge: 60 * 3,
+      maxAge: 60,
     });
 
     if (created) {

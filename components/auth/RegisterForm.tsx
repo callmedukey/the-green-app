@@ -171,7 +171,7 @@ const RegisterForm = ({
       });
       if (!response.error && cookieSentTime) {
         const timeSent = new Date(cookieSentTime);
-        const dueTime = timeSent.getTime() + Math.floor(1000 * 60 * 3);
+        const dueTime = timeSent.getTime() + Math.floor(1000 * 60);
         const diff = dueTime - new Date().getTime();
         const seconds = Math.floor(diff / 1000);
 
@@ -184,7 +184,7 @@ const RegisterForm = ({
         setIsVerifying(false);
         return alert(response.error);
       }
-      setTimer(90);
+      setTimer(60);
     } catch (error) {
       alert("인증번호 발송 오류");
       setTimer(0);
