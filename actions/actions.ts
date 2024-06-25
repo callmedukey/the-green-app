@@ -41,7 +41,7 @@ export const checkQuoteResult = async ({
     return redirect("/login");
   }
 
-  return redirect("/easy-quote/result");
+  return redirect("/easy-quote/result#main");
 };
 
 export const signOutUser = async () => {

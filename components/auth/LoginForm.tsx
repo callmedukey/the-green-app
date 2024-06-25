@@ -44,7 +44,7 @@ const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
       const result = await signInUser(
         data.username,
         data.password,
-        cameFromQuote ? "/easy-quote/result" : "/account"
+        cameFromQuote ? "/easy-quote/result#main" : "/account"
       );
       if (result && result.error) {
         alert(result.error);
