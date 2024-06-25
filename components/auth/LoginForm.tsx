@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { signInUser } from "@/actions/auth-actions";
 import Link from "next/link";
 import testValidPassword from "@/lib/tesValidPassword";
+import { useRouter } from "next/navigation";
 
 const LoginSchema = z.object({
   username: z
@@ -31,6 +32,7 @@ const LoginSchema = z.object({
     }),
 });
 const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -41,13 +43,11 @@ const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
     try {
-      const result = await signInUser(
-        data.username,
-        data.password,
-        cameFromQuote ? "/easy-quote/result#main" : "/account"
-      );
+      const result = await signInUser(data.username, data.password);
       if (result && result.error) {
         alert(result.error);
+      } else {
+        router.push(cameFromQuote ? "/easy-quote/result#main" : "/account");
       }
     } catch (error) {
       alert("오류가 발생했습니다, 관리자에게 문의해주세요");

@@ -26,6 +26,7 @@ import {
   verifyPhoneNumberCode,
 } from "@/actions/auth-actions";
 import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
+import { useRouter } from "next/navigation";
 
 declare global {
   interface Window {
@@ -89,6 +90,7 @@ const RegisterForm = ({
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [validUsername, setValidUsername] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -146,11 +148,14 @@ const RegisterForm = ({
       }
 
       if (redirectTo) {
-        await signInUser(
-          data.username,
-          data.password,
-          cameFromQuote ? "/easy-quote/result#main" : redirectTo
-        );
+        const { message } = await signInUser(data.username, data.password);
+
+        if (message) {
+          router.push(cameFromQuote ? "/easy-quote/result#main" : redirectTo);
+        } else {
+          alert(message);
+          router.push("/login");
+        }
       }
     } catch (error) {
       console.error(error);

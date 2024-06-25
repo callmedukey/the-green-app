@@ -196,11 +196,7 @@ export const registerUser = async ({
   }
 };
 
-export const signInUser = async (
-  username: string,
-  password: string,
-  redirectTo: string
-) => {
+export const signInUser = async (username: string, password: string) => {
   const userExists = await prisma.user.findFirst({
     where: {
       username,
@@ -214,12 +210,14 @@ export const signInUser = async (
     };
   }
 
-  return signIn("credentials", {
+  await signIn("credentials", {
     username,
     password,
-    redirectTo,
-    redirect: true,
   });
+
+  return {
+    message: "로그인 성공",
+  };
 };
 
 export const findUsername = async ({
