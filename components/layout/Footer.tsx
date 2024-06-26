@@ -7,7 +7,7 @@ const Footer = () => {
       <p className="text-xs text-muted-foreground">
         &copy; 2024 {`(주)더그린`}
       </p>
-      <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+      {/* <nav className="sm:ml-auto flex gap-4 sm:gap-6">
         <Link
           href="#"
           className="text-xs hover:underline underline-offset-4"
@@ -22,7 +22,7 @@ const Footer = () => {
         >
           Privacy Policy
         </Link>
-      </nav>
+      </nav> */}
     </footer>
   );
 };
