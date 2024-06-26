@@ -266,7 +266,7 @@ export const resetPasswordFirstStep = async ({
     if (passwordResetSent) {
       return {
         error:
-          "인증번호 발송하신지 3분이 안되었습니다. 잠시 후 다시 시도해주세요.",
+          "인증번호 발송하신지 1분이 안되었습니다. 잠시 후 다시 시도해주세요.",
       };
     }
 
@@ -314,7 +314,7 @@ export const resetPasswordFirstStep = async ({
           path: "/",
           httpOnly: true,
           secure: true,
-          maxAge: 60 * 3,
+          maxAge: 60,
         });
 
         return {
