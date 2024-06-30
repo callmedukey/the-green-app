@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import saltAndHashPassword from "./lib/saltAndHashPassword";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
+import testValidPassword from "./lib/tesValidPassword";
 
 export const LoginSchema = z.object({
   username: z.string().min(4).max(14),
@@ -10,9 +11,7 @@ export const LoginSchema = z.object({
     .string()
     .min(8)
     .max(20)
-    .regex(
-      /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/
-    ),
+    .refine((val) => testValidPassword(val)),
 });
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
