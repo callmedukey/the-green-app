@@ -3,6 +3,7 @@ import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
 import Banner from "@/public/banner-2.jpg";
 import { redirect } from "next/navigation";
+import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +18,7 @@ const ResetPasswordFinalPage = async ({
     return redirect("/reset-password");
   }
 
-  const foundCode = await prisma?.oneTimeUniqueCode.findFirst({
+  const foundCode = await prisma.oneTimeUniqueCode.findFirst({
     where: {
       id: code,
     },
