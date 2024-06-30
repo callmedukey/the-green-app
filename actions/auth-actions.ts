@@ -1,5 +1,5 @@
 "use server";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import censorUsername from "@/lib/censorUsername";
 import containsSpecialCharacters from "@/lib/containsSpecialCharacters";
 import generateCode from "@/lib/generateCode";
@@ -213,6 +213,7 @@ export const signInUser = async (username: string, password: string) => {
   await signIn("credentials", {
     username,
     password,
+    redirect: false,
   });
 
   return {
@@ -525,4 +526,8 @@ export const deleteUser = async ({
   } catch (error) {
     return { error: "회원탈퇴 오류, 유선 문의 부탁드립니다" };
   }
+};
+
+export const SignOutUser = async () => {
+  await signOut({ redirectTo: "/login", redirect: true });
 };

@@ -148,9 +148,13 @@ const RegisterForm = ({
       }
 
       if (redirectTo) {
-        const { message } = await signInUser(data.username, data.password);
+        const response = await signInUser(data.username, data.password);
+        console.log(response);
+        if (response.error) {
+          return alert(response.error);
+        }
 
-        if (message) {
+        if (response && response.message) {
           router.push(cameFromQuote ? "/easy-quote/result#main" : redirectTo);
         } else {
           alert(message);
