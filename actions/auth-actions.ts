@@ -359,11 +359,25 @@ export const resetPasswordSecondStep = async ({
       };
     }
 
-    const uniqueCode = await prisma.oneTimeUniqueCode.create({
-      data: {
+    const uniqueCode = await prisma.oneTimeUniqueCode.findUnique({
+      where: {
         userUsername: username,
       },
     });
+    let codeId;
+    if (!uniqueCode) {
+      codeId = await prisma.oneTimeUniqueCode.create({
+        data: {
+          userUsername: username,
+        },
+      });
+      if (codeId) {
+        return {
+          message: "인증번호 확인 완료",
+          redirectTo: `/reset-password/reset?code=${codeId.id}`,
+        };
+      }
+    }
 
     if (uniqueCode) {
       return {
