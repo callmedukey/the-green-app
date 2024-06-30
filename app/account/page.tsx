@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import { AccountTabs } from "@/components/account/AccountTabs";
-import SignoutButton from "@/components/auth/SignoutButton";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
 import MainBanner from "@/public/banner-1.png";
