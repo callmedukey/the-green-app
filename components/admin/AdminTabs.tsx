@@ -35,7 +35,7 @@ const AdminTabs = ({
       <TabsList className="grid w-full grid-cols-4 text-sm sm:text-base">
         <TabsTrigger value="inquiries">문의 내역</TabsTrigger>
         <TabsTrigger value="bookings">방문 예약 상황</TabsTrigger>
-        <TabsTrigger value="account">계정 정보</TabsTrigger>
+        <TabsTrigger value="account">관리 단계</TabsTrigger>
         <TabsTrigger value="settings">설정</TabsTrigger>
       </TabsList>
       <TabsContent
@@ -43,10 +43,10 @@ const AdminTabs = ({
         className="max-h-[600px] h-[600px] overflow-y-scroll divide-y-2 text-sm md:text-base"
       >
         <div className="grid h-12 items-center gap-2 grid-cols-4">
+          <div className="w-full text-center">유형</div>
           <div className="w-full text-center">제목</div>
           <div className="w-full text-center">첨부파일</div>
           <div className="w-full text-center">작성일자</div>
-          <div className="w-full text-center">유형</div>
         </div>
         {inquiries.map((inquiry) => {
           return (
