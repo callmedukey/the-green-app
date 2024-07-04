@@ -1,7 +1,7 @@
 import LoginForm from "@/components/auth/LoginForm";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
-import Banner from "@/public/banner-1.png";
+import Banner from "@/public/banner3.webp";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 

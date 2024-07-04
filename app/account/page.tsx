@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import { AccountTabs } from "@/components/account/AccountTabs";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
-import MainBanner from "@/public/banner-1.png";
+import MainBanner from "@/public/banner3.webp";
 import { redirect } from "next/navigation";
 import React from "react";
 import prisma from "@/lib/prisma";

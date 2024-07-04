@@ -1,7 +1,7 @@
 import RegisterForm from "@/components/auth/RegisterForm";
 import MainContainer from "@/components/layout/MainContainer";
 import { cookies } from "next/headers";
-import Banner from "@/public/banner-1.png";
+import Banner from "@/public/banner3.webp";
 
 const RegisterPage = () => {
   const cookieStore = cookies();
