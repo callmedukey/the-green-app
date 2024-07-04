@@ -1,7 +1,7 @@
 import ResetPasswordFormFinal from "@/components/auth/ResetPasswordFormFinal";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
-import Banner from "@/public/banner-2.jpg";
+import Banner from "@/public/banner3.webp";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 

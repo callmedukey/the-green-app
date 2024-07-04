@@ -1,7 +1,7 @@
 import FindUsernameForm from "@/components/auth/FindUsernameForm";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
-import MainBanner from "@/public/banner-1.png";
+import MainBanner from "@/public/banner3.webp";
 
 const FindUsernamePage = () => {
   return (

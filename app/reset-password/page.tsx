@@ -1,7 +1,7 @@
 import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
 import CenterContainer from "@/components/layout/CenterContainer";
 import MainContainer from "@/components/layout/MainContainer";
-import Banner from "@/public/banner-2.jpg";
+import Banner from "@/public/banner3.webp";
 
 const ResetPasswordPage = () => {
   return (
