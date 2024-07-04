@@ -93,6 +93,26 @@ const carouselArray = [
     description: "건축과 하나인 조경구성",
     image: "/landscape.png",
   },
+  {
+    title: "설계",
+    description: "1평이라도 빈틈없는 설계",
+    image: "/blueprint.png",
+  },
+  {
+    title: "건축",
+    description: "건축 견적 시공",
+    image: "/architecture.png",
+  },
+  {
+    title: "인허가컨설팅",
+    description: "실무경력 풍부한 행정사 자격 전문가",
+    image: "/consulting.png",
+  },
+  {
+    title: "조경",
+    description: "건축과 하나인 조경구성",
+    image: "/landscape.png",
+  },
 ];
 
 export function MainCarousel() {
@@ -131,7 +151,15 @@ export function MainCarousel() {
                   "bg-[url('/landscape.png')] bg-cover bg-center bg-no-repeat"
               )}
             >
-              <CardContent className={cn("flex items-center justify-center")}>
+              <CardContent
+                className={cn(
+                  "flex items-center justify-center bg-tertiaryGray/60 h-full w-full flex-col font-gmarketSans"
+                )}
+              >
+                <p className="flex flex-col gap-4 text-white items-center justify-center mt-auto mb-6">
+                  <span className="text-sm">{carousel.title}</span>
+                  <span className="text-xs">{carousel.description}</span>
+                </p>
                 {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
               </CardContent>
             </Card>
