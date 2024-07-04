@@ -14,8 +14,10 @@ export default function AboutUsPage() {
         className="w-full mt-16"
       />
       <section className="py-12 md:py-20">
-        <h1 className="text-5xl ml-16">About 더그린</h1>
-        <p className="ml-16 font-doHyeon text-2xl max-w-xl mt-6 text-mutedText">
+        <h1 className="text-5xl xl:ml-16 ml-4 sm:ml-8 md:ml-12">
+          About 더그린
+        </h1>
+        <p className="xl:ml-16 ml-4 sm:ml-8 md:ml-12 font-doHyeon text-2xl max-w-xl mt-6 text-mutedText pr-4 sm:pr-0">
           더그린과 함께하는 이유 더그린 중심에는 품질, 지속 가능성, 커뮤니티에
           대한 헌신이 있습니다. 이러한 가치는 우리가 내리는 모든 결정에 영향을
           미치며 각 프로젝트를 접근하는 방식에 영향을 줍니다.

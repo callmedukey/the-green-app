@@ -29,6 +29,8 @@ const config = {
         secondaryGray: "hsl(var(--secondary-gray))",
         tertiaryGray: "hsl(var(--tertiary-gray))",
         quadGray: "hsl(var(--quad-gray))",
+        finalGray: "hsl(var(--final-gray))",
+        trulyFinalGray: "hsl(var(--truly-final-gray))",
         mainBlue: "hsl(var(--main-blue))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

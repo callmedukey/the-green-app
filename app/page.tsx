@@ -1,7 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { AnimatedTitle } from "@/components/animated/AnimatedTitle";
-import { ImagesSlider } from "@/components/animated/ImagesSlider";
 import { MainCarousel } from "@/components/main/MainCarousel";
 import { Play } from "lucide-react";
 

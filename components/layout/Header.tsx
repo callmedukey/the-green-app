@@ -29,7 +29,7 @@ const Header = () => {
           href="/inquiry"
           className="p-4 hover:bg-gray-200 transition-colors duration-300"
         >
-          상세견적문의하기
+          상세 견적문의하기
         </Link>
         <Link
           href="/booking"
@@ -60,3 +60,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
