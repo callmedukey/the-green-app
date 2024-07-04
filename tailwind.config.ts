@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
@@ -18,7 +19,15 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        han: ["var(--font-han)", ...fontFamily.sans],
+        gmarketSans: ["var(--font-gmarket-sans)", ...fontFamily.sans],
+        doHyeon: ["var(--font-do-hyeon)", ...fontFamily.sans],
+      },
       colors: {
+        mainGray: "hsl(var(--gray))",
+        secondaryGray: "hsl(var(--secondary-gray))",
+        mainBlue: "hsl(var(--main-blue))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -39,6 +48,9 @@ const config = {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
+        },
+        mutedText: {
+          DEFAULT: "hsl(var(--muted-text))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",

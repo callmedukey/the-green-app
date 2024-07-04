@@ -1,23 +1,18 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Logo from "@/public/logo.svg";
 import Account from "@/public/account.svg";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 const Header = () => {
   return (
     <header className="h-24 flex items-center justify-center sm:px-12 px-6">
       <Link href="/" className="ml-0 mr-auto">
-        <Image src={Logo} alt="logo" width={150} height={100} priority />
+        <Image src={Logo} alt="logo" width={250} height={100} priority />
       </Link>
 
-      <nav className="items-center gap-2 lg:gap-4 md:flex hidden">
+      <nav className="items-center gap-2 lg:gap-4 lg:flex hidden">
         <Link
           href="/about"
           className="p-4 hover:bg-gray-200 transition-colors duration-300"
@@ -28,27 +23,20 @@ const Header = () => {
           href="/tasks"
           className="p-4 hover:bg-gray-200 transition-colors duration-300"
         >
-          주요 업무
+          사업분야
         </Link>
-        <Popover>
-          <PopoverTrigger className="p-4 hover:bg-gray-200 transition-colors duration-300">
-            건축 문의
-          </PopoverTrigger>
-          <PopoverContent className="flex-col gap-4 flex items-center max-w-[200px]">
-            <Link
-              href="/inquiry"
-              className="p-2 hover:bg-gray-200 transition-colors duration-300 w-full text-center"
-            >
-              문의하기
-            </Link>
-            <Link
-              href="/booking"
-              className="p-2 hover:bg-gray-200 transition-colors duration-300 w-full text-center"
-            >
-              현장 방문예약
-            </Link>
-          </PopoverContent>
-        </Popover>
+        <Link
+          href="/inquiry"
+          className="p-4 hover:bg-gray-200 transition-colors duration-300"
+        >
+          상세견적문의하기
+        </Link>
+        <Link
+          href="/booking"
+          className="p-4 hover:bg-gray-200 transition-colors duration-300"
+        >
+          현장방문예약
+        </Link>
 
         <Link
           href="/easy-quote"

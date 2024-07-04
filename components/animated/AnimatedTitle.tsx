@@ -32,10 +32,7 @@ export const AnimatedTitle = ({
           return (
             <motion.span
               key={word + idx}
-              className={cn(
-                "dark:text-white text-black opacity-0",
-                idx === wordsArray.length - 1 && "text-primary"
-              )}
+              className={cn("text-primary opacity-0")}
             >
               {word}{" "}
             </motion.span>
@@ -46,7 +43,7 @@ export const AnimatedTitle = ({
   };
 
   return (
-    <h1 className="text-3xl font-bold tracking-tighter mx-auto sm:text-4xl md:text-6xl flex gap-2.5 items-center justify-center lg:justify-start">
+    <h1 className="text-3xl mx-auto sm:text-4xl md:text-6xl flex gap-2.5 items-center justify-center lg:justify-start font-han tracking-wide">
       {renderWords()}
     </h1>
   );

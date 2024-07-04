@@ -1,12 +1,40 @@
+import localFont from "next/font/local";
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { Black_Han_Sans, Do_Hyeon } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const Noto = Noto_Sans_KR({ subsets: ["latin"], variable: "--font-sans" });
+const Han = Black_Han_Sans({
+  subsets: ["latin"],
+  variable: "--font-han",
+  weight: "400",
+});
 
+const DoHyeon = Do_Hyeon({
+  subsets: ["latin"],
+  variable: "--font-do-hyeon",
+  weight: "400",
+});
+
+const gmarketSans = localFont({
+  src: [
+    {
+      path: "./fonts/GmarketSansTTFMedium.ttf",
+      weight: "500",
+    },
+    {
+      path: "./fonts/GmarketSansTTFBold.ttf",
+      weight: "700",
+    },
+    {
+      path: "./fonts/GmarketSansTTFLight.ttf",
+      weight: "300",
+    },
+  ],
+  variable: "--font-gmarket-sans",
+});
 export const metadata: Metadata = {
   title: "더그린",
   description: "더그린 프로젝트",
@@ -22,7 +50,9 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          Noto.variable
+          Han.variable,
+          gmarketSans.variable,
+          DoHyeon.variable
         )}
       >
         <Header />
