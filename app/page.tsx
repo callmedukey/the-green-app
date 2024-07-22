@@ -9,7 +9,7 @@ export default function Component() {
     <div className="flex flex-col min-h-[100dvh] break-keep">
       <main className="">
         <a
-          href="/"
+          href="https://pf.kakao.com/_BhMHG"
           className="fixed bottom-[5dvh] right-4 z-20"
           target="_blank"
         >
