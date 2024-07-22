@@ -5,8 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import KakaoIcon from "@/public/kakao.svg";
-import Image from "next/image";
+
 
 const DoHyeon = Do_Hyeon({
   subsets: ["latin"],
@@ -59,18 +58,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <a
-          href="/"
-          className="fixed bottom-[5dvh] right-4 z-20"
-          target="_blank"
-        >
-          <Image
-            src={KakaoIcon}
-            alt="카카오 채널 링크"
-            width={80}
-            height={80}
-          />
-        </a>
+        
         <Footer />
       </body>
     </html>

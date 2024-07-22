@@ -5,6 +5,7 @@ import type { attachments, booking, inquiry, user } from "@prisma/client";
 import AccountEdit from "./AccountEdit";
 import { format } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
+import { parseUserStatus } from "@/lib/parseUserStatus";
 
 interface InquiryWithAttachments extends inquiry {
   attachments: attachments[];
@@ -34,11 +35,18 @@ export function AccountTabs({
         router.push(`/account?state=${value}`);
       }}
     >
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="inquiries">문의 내역</TabsTrigger>
-        <TabsTrigger value="bookings">방문 예약 상황</TabsTrigger>
-        <TabsTrigger value="account">계정 정보</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-4">
+        <TabsTrigger value="current">나의 단계</TabsTrigger>
+        <TabsTrigger value="inquiries">상세견적내역</TabsTrigger>
+        <TabsTrigger value="bookings">방문예약내역</TabsTrigger>
+        <TabsTrigger value="account">나의 정보</TabsTrigger>
       </TabsList>
+      <TabsContent
+        value="current"
+        className="max-h-[600px] h-[600px] overflow-y-scroll text-center"
+      >
+        {parseUserStatus(userInfo.userStatus)}
+      </TabsContent>
       <TabsContent
         value="inquiries"
         className="max-h-[600px] h-[600px] overflow-y-scroll divide-y-2"

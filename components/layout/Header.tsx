@@ -22,8 +22,8 @@ const Header = () => {
       transition-all duration-300 ease-out
       ${scrolled ? "bg-white shadow-xl" : "bg-primary shadow-none"}`}
     >
-      <div className="h-20 flex items-center lg:justify-center max-width-tg sm:px-12">
-        <Link href="/" className="ml-0 mr-auto">
+      <div className="h-20 flex items-center lg:justify-center max-width-tg sm:px-12 px-6">
+        <Link href="/" className="ml-0 mr-auto -translate-x-6">
           <svg
             className="-translate-x-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -708,17 +708,8 @@ const Header = () => {
             </div>
           </div>
         </nav>
+        <MobileMenu />
       </div>
-      {/* <Image
-            src={Account}
-            width={35}
-            height={35}
-            priority
-            alt="Account link"
-          /> 
-          <Image src={Account} width={35} height={35} priority alt="Account link" />
-        </nav>
-        {/* <MobileMenu /> */}
     </header>
   );
 };

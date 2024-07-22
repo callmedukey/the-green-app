@@ -2,16 +2,29 @@ import Link from "next/link";
 import { MainCarousel } from "@/components/main/MainCarousel";
 import MotionArticle from "@/components/main/MotionArticle";
 import Image from "next/image";
-
+import KakaoIcon from "@/public/kakao.svg";
 
 export default function Component() {
   return (
     <div className="flex flex-col min-h-[100dvh] break-keep">
       <main className="">
+        <a
+          href="/"
+          className="fixed bottom-[5dvh] right-4 z-20"
+          target="_blank"
+        >
+          <Image
+            src={KakaoIcon}
+            alt="카카오 채널 링크"
+            width={80}
+            height={80}
+          />
+        </a>
         <section className="w-full py-12 md:px-8 lg:px-20 bg-primary h-[80dvh] max-h-[600px]">
-          <div className="grid grid-cols-2 w-full max-width-tg">
-            <div className="max-w-7xl xl:mt-56 flex items-center justify-center flex-col h-full xl:items-start xl:justify-start space-y-6">
-              <h1 className="text-5xl md:text-6xl  tracking-wide text-white font-bold">
+          <div className="h-16 xl:hidden" />
+          <div className="grid md:grid-cols-2 w-full max-width-tg">
+            <div className="max-w-7xl xl:mt-56 md:mt-12 flex items-center justify-center flex-col h-full xl:items-start xl:justify-start space-y-6 px-4">
+              <h1 className="text-4xl xl:text-6xl tracking-wide text-white font-bold">
                 7초 간편견적계산
               </h1>
               <p className="text-white text-xl flex flex-col gap-2 items-center justify-center text-center xl:items-start">
@@ -26,17 +39,18 @@ export default function Component() {
                 7초 간편견적
               </Link>
             </div>
-            <div className="flex items-center justify-center -translate-x-12">
+            <div className="items-center justify-center lg:-translate-x-12 md:flex px-4 hidden">
               <Image
-                className="translate-y-36 absolute alt-a-fade"
+                className="translate-y-48 md:translate-y-24 size-[300px] sm:size-[350px] lg:size-[400px] xl:w-[650px] xl:h-[460px] lg:translate-y-36 absolute alt-a-fade"
                 src="/레메디.png"
                 alt="easy-quote"
                 width={650}
                 height={452}
                 priority
               />
+
               <Image
-                className="translate-y-36 absolute alt-b-fade"
+                className="translate-y-48 md:translate-y-24 size-[300px] sm:size-[350px] lg:size-[400px] xl:size-[500px] lg:translate-y-36 absolute alt-b-fade"
                 src="/ai-gen.png"
                 alt="easy-quote"
                 width={500}
@@ -48,7 +62,7 @@ export default function Component() {
         </section>
         <section className="max-width-tg relative">
           <div className="relative">
-            <div className="sm:px-16 xl:px-24 mt-20 space-y-6 px-4 grid grid-cols-2 items-center py-12">
+            <div className="sm:px-16 xl:px-24 mt-20 space-y-6 px-4 grid lg:grid-cols-2 items-center py-12">
               <div className="">
                 <h2 className="flex flex-col text-[32px] font-bold">
                   <span className="text-mainGray leading-[1rem]">
@@ -64,7 +78,7 @@ export default function Component() {
                 </p>
               </div>
               <div>
-                <h3 className="text-[96px] font-bold text-zzinMakGray text-right -translate-y-10">
+                <h3 className="text-[96px] font-bold text-zzinMakGray text-right -translate-y-10 hidden lg:block">
                   Business
                 </h3>
               </div>

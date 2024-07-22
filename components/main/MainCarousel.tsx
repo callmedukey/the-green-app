@@ -123,7 +123,7 @@ export function MainCarousel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full mx-auto max-w-7xl -translate-y-12 translate-x-20"
+      className="w-full mx-auto max-w-7xl -translate-y-12 lg:translate-x-20"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={() => {
         plugin.current.play();
@@ -135,7 +135,7 @@ export function MainCarousel() {
       <CarouselContent className="">
         {carouselArray.map((carousel, i) => (
           <CarouselItem
-            className="basis-1/1 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+            className="basis-1/1 sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
             key={carousel.title + i}
           >
             <Card
