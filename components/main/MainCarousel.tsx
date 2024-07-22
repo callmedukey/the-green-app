@@ -117,13 +117,13 @@ const carouselArray = [
 
 export function MainCarousel() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full mx-auto max-w-7xl"
+      className="w-full mx-auto max-w-7xl -translate-y-12 translate-x-20"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={() => {
         plugin.current.play();
@@ -135,12 +135,12 @@ export function MainCarousel() {
       <CarouselContent className="">
         {carouselArray.map((carousel, i) => (
           <CarouselItem
-            className="basis-1/1 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 transition-all duration-300 hover:scale-y-[120%] hover:scale-x-[120%] hover:translate-y-[-10%] hover:mx-3"
+            className="basis-1/1 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
             key={carousel.title + i}
           >
             <Card
               className={cn(
-                "h-[200px] w-[250px]",
+                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative",
                 carousel.image === "/blueprint.png" &&
                   "bg-[url('/blueprint.png')] bg-cover bg-center bg-no-repeat",
                 carousel.image === "/architecture.png" &&
@@ -153,14 +153,13 @@ export function MainCarousel() {
             >
               <CardContent
                 className={cn(
-                  "flex items-center justify-center bg-tertiaryGray/60 h-full w-full flex-col font-gmarketSans"
+                  "flex items-center justify-center bg-tertiaryGray/60 h-full w-full flex-col group-hover:h-[80px] bottom-0 absolute transition-all duration-200 origin-bottom"
                 )}
               >
-                <p className="flex flex-col gap-4 text-white items-center justify-center mt-auto mb-6">
+                <p className="group-hover:flex flex-col gap-4 text-white items-start justify-center mt-auto font-bold hidden w-full">
                   <span className="text-sm">{carousel.title}</span>
                   <span className="text-xs">{carousel.description}</span>
                 </p>
-                {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
               </CardContent>
             </Card>
           </CarouselItem>

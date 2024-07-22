@@ -11,6 +11,7 @@
     --popover: 223 35% 100%;
     --popover-foreground: 223 95% 10%;
     --primary: 223 22.2% 28.2%;
+
     --primary-foreground: 0 0% 100%;
     --secondary: 223 30% 90%;
     --secondary-foreground: 0 0% 0%;
@@ -30,9 +31,11 @@
     --quad-gray: 0 0% 22.4%;
     --final-gray: 0 0% 54.5%;
     --truly-final-gray: 0 0% 85.1%;
-
+    --zzin-mak-gray: 0 0% 95%;
     --muted-text: 0 0% 49.4%;
     --main-blue: 219.4 100% 24.5%;
+    --secondary-blue: 214 75% 24%;
+    --tertiary-blue: 214 74% 31%;
   }
   .dark {
     --background: 223 35% 10%;
@@ -65,8 +68,45 @@
     @apply bg-background text-foreground;
   }
 
+  .max-width-tg {
+    @apply max-w-[1728px] mx-auto w-full;
+  }
+
   .fade-in {
     animation: fade-in 2s ease-in-out;
+  }
+
+  .hover-underline:hover::after {
+    @apply bg-yellow-500;
+
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    z-index: -1;
+  }
+
+  .triangle-top::after {
+    @apply shadow-inner;
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+  }
+
+  .alt-a-fade {
+    animation: alt-a-fade 10s ease-in-out infinite;
+  }
+  .alt-b-fade {
+    animation: alt-b-fade 10s ease-in-out infinite;
   }
 
   @keyframes fade-in {
@@ -75,6 +115,41 @@
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @keyframes alt-a-fade {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes alt-b-fade {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 }

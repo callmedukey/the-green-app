@@ -1,21 +1,21 @@
 import localFont from "next/font/local";
 import type { Metadata } from "next";
-import { Black_Han_Sans, Do_Hyeon } from "next/font/google";
+import { Do_Hyeon, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const Han = Black_Han_Sans({
-  subsets: ["latin"],
-  variable: "--font-han",
-  weight: "400",
-});
-
 const DoHyeon = Do_Hyeon({
   subsets: ["latin"],
   variable: "--font-do-hyeon",
   weight: "400",
+});
+
+const NotoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+  variable: "--font-noto-sans-kr",
+  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 const gmarketSans = localFont({
@@ -50,9 +50,9 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          Han.variable,
           gmarketSans.variable,
-          DoHyeon.variable
+          DoHyeon.variable,
+          NotoSansKR.variable
         )}
       >
         <Header />
