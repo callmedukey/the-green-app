@@ -43,7 +43,7 @@ interface IAddr {
 }
 
 const bookingSchema = z.object({
-  name: z.string().min(2, { message: "성함을 입력해주세요." }),
+  name: z.string().min(2, { message: "이름을 입력해주세요." }),
   phone: z
     .string()
     .min(1, { message: "전화번호를 입력해주세요." })
@@ -77,7 +77,6 @@ const BookingForm = () => {
       name: "",
       phone: "",
       planDate: "3months",
-      pyeong: 0,
       address: "",
       addressDetail: "",
       reason: "",
@@ -132,7 +131,7 @@ const BookingForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem className="relative">
-                <FormLabel>성함</FormLabel>
+                <FormLabel>이름</FormLabel>
                 <FormControl>
                   <Input {...field} maxLength={20} />
                 </FormControl>
@@ -156,7 +155,7 @@ const BookingForm = () => {
         </fieldset>
         <fieldset className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label>현장방문일</Label>
+            <Label>방문요청일</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -208,6 +207,7 @@ const BookingForm = () => {
                   <Input
                     {...field}
                     type="number"
+                    placeholder="평수를 입력해주세요"
                     onChange={(e) => field.onChange(Number(e.target.value))}
                   />
                 </FormControl>
@@ -283,12 +283,6 @@ const BookingForm = () => {
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="12months" />
-                    </FormControl>
-                    <FormLabel className="font-normal">1년이내</FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
                       <RadioGroupItem value="unknown" />
                     </FormControl>
                     <FormLabel className="font-normal">미정</FormLabel>
@@ -312,7 +306,7 @@ const BookingForm = () => {
             </FormItem>
           )}
         />
-        <Button className="w-full font-bold">방문신청하기</Button>
+        <Button className="w-full font-bold">방문예약하기</Button>
       </form>
       <Script
         src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"

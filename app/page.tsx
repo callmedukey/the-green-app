@@ -2,14 +2,11 @@ import Link from "next/link";
 import { MainCarousel } from "@/components/main/MainCarousel";
 import MotionArticle from "@/components/main/MotionArticle";
 import Image from "next/image";
-import KakaoIcon from "@/public/kakao.svg";
+
 
 export default function Component() {
   return (
     <div className="flex flex-col min-h-[100dvh] break-keep">
-      <a href="/" className="fixed top-[50vh] right-4" target="_blank">
-        <Image src={KakaoIcon} alt="카카오 채널 링크" width={80} height={80} />
-      </a>
       <main className="">
         <section className="w-full py-12 md:px-8 lg:px-20 bg-primary h-[80dvh] max-h-[600px]">
           <div className="grid grid-cols-2 w-full max-width-tg">
@@ -78,7 +75,7 @@ export default function Component() {
             <div className="absolute size-[400px] bottom-12 right-[45%] bg-tertiaryBlue rotate-45 blur-md" />
           </div>
         </section>
-        <section className="w-full bg-[url('/main-warehouse.webp')] bg-cover bg-top bg-no-repeat h-[500px] flex overflow-hidden">
+        <section className="w-full bg-[url('/main-warehouse.webp')] bg-cover bg-top bg-no-repeat h-[500px] flex overflow-hidden mt-12">
           <MotionArticle />
         </section>
       </main>

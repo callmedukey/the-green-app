@@ -19,7 +19,7 @@ import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 export const InquiryPlanSchema = z.object({
-  name: z.string().min(2, { message: "성함을 입력해주세요." }),
+  name: z.string().min(2, { message: "이름을 입력해주세요." }),
   phone: z
     .string()
     .min(1, { message: "전화번호를 입력해주세요." })
@@ -120,7 +120,7 @@ const InquiryForm = () => {
                         <RadioGroupItem value="CONSTRUCTION" />
                       </FormControl>
                       <FormLabel className="font-normal">
-                        건축 도면 제출
+                        건축도면제출
                       </FormLabel>
                     </FormItem>
                     <FormItem className="flex items-center space-x-2 space-y-0 sm:space-x-3">
@@ -128,7 +128,7 @@ const InquiryForm = () => {
                         <RadioGroupItem value="PLAN" />
                       </FormControl>
                       <FormLabel className="font-normal">
-                        건춘견적 관련 문의
+                        건춘견적관련
                       </FormLabel>
                     </FormItem>
                     <FormItem className="flex items-center space-x-2 space-y-0 sm:space-x-3">
@@ -150,7 +150,7 @@ const InquiryForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem className="relative">
-                <FormLabel>성함</FormLabel>
+                <FormLabel>이름</FormLabel>
                 <FormControl>
                   <Input {...field} maxLength={20} />
                 </FormControl>
@@ -198,14 +198,30 @@ const InquiryForm = () => {
             </FormItem>
           )}
         />
+        <p className="py-2">건축도면첨부하세요!</p>
+
         <fieldset className="grid grid-cols-2 gap-x-4 border p-4 rounded-md">
           <FormField
             control={form.control}
             name="file1"
             render={({ field }) => (
               <FormItem className="relative">
+                <FormLabel className="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                  <span className="bg-gray-300 font-bold px-2 py-0.5 block">
+                    파일 선택
+                  </span>
+                  <span className="block ml-2 truncate max-w-[100px]">
+                    {form.getValues("file1") && form.getValues("file1")[0]
+                      ? form.getValues("file1")[0].name
+                      : "선택된 파일 없음"}
+                  </span>
+                </FormLabel>
                 <FormControl>
-                  <Input {...form.register("file1")} type="file" />
+                  <Input
+                    {...form.register("file1")}
+                    type="file"
+                    className="hidden"
+                  />
                 </FormControl>
                 {form.getValues("file1") && form.getValues("file1")[0] && (
                   <Button
@@ -227,8 +243,22 @@ const InquiryForm = () => {
             name="file2"
             render={({ field }) => (
               <FormItem className="relative">
+                <FormLabel className="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                  <span className="bg-gray-300 font-bold px-2 py-0.5 block">
+                    파일 선택
+                  </span>
+                  <span className="block ml-2 truncate max-w-[100px]">
+                    {form.getValues("file2") && form.getValues("file2")[0]
+                      ? form.getValues("file2")[0].name
+                      : "선택된 파일 없음"}
+                  </span>
+                </FormLabel>
                 <FormControl>
-                  <Input {...form.register("file2")} type="file" />
+                  <Input
+                    {...form.register("file2")}
+                    type="file"
+                    className="hidden"
+                  />
                 </FormControl>
                 <FormMessage />
                 {form.getValues("file2") && form.getValues("file2")[0] && (

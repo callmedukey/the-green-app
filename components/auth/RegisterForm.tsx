@@ -64,7 +64,7 @@ const RegisterSchema = z.object({
     }),
   detailedAddress: z.string().optional(),
   email: z.string().email({ message: "이메일 형식이 올바르지 않습니다." }),
-  name: z.string().min(2, { message: "성함은 최소 2자 이상입니다." }),
+  name: z.string().min(2, { message: "이름은 최소 2자 이상입니다." }),
   phone: z.string().refine((val) => testValidPhoneNumber(val), {
     message: "휴대폰 번호 형식이 올바르지 않습니다.",
   }),
@@ -272,7 +272,7 @@ const RegisterForm = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>성함</FormLabel>
+                  <FormLabel>이름</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -331,7 +331,7 @@ const RegisterForm = ({
                     }
                     onClick={handleVerificationVerify}
                   >
-                    {isVerified ? "인증 완료" : "인증"}
+                    {isVerified ? "인증완료" : "인증확인"}
                   </button>
 
                   <FormLabel>인증번호</FormLabel>

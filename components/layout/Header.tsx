@@ -649,7 +649,7 @@ const Header = () => {
               scrolled && "text-primary font-medium"
             )}
           >
-            상세 견적문의하기
+            상세 견적 문의
           </Link>
           <Link
             href="/booking"
@@ -658,7 +658,7 @@ const Header = () => {
               scrolled && "text-primary font-medium"
             )}
           >
-            현장방문예약
+            현장 방문예약
           </Link>
 
           <Link

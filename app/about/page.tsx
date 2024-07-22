@@ -1,12 +1,10 @@
 import Image from "next/image";
-import BannerImg from "@/public/banner-1.png";
-import MainContainer from "@/components/layout/MainContainer";
 
 export default function AboutUsPage() {
   return (
-    <main className="font-han">
+    <main className="">
       <Image
-        src="/trucks.webp"
+        src="/about-banner.webp"
         alt="그린벨트 공장에서 나오는 트럭 이미지"
         width={1800}
         height={800}
@@ -14,19 +12,21 @@ export default function AboutUsPage() {
         className="w-full mt-16"
       />
       <section className="py-12 md:py-20">
-        <h1 className="text-5xl xl:ml-16 ml-4 sm:ml-8 md:ml-12">
+        <h1 className="text-[40px] xl:ml-16 ml-4 sm:ml-8 md:ml-12 font-bold">
           About 더그린
         </h1>
-        <p className="xl:ml-16 ml-4 sm:ml-8 md:ml-12 font-doHyeon text-2xl max-w-xl mt-6 text-mutedText pr-4 sm:pr-0">
+        <p className="xl:ml-16 ml-4 sm:ml-8 md:ml-12 text-2xl max-w-xl mt-6 text-quadGrey pr-4 sm:pr-0 font-medium">
           더그린과 함께하는 이유 더그린 중심에는 품질, 지속 가능성, 커뮤니티에
           대한 헌신이 있습니다. 이러한 가치는 우리가 내리는 모든 결정에 영향을
           미치며 각 프로젝트를 접근하는 방식에 영향을 줍니다.
         </p>
         <article className="py-16 mt-32">
-          <h2 className="text-quadGray text-5xl text-center">포트폴리오</h2>
+          <h2 className="text-quadGray text-[40px] font-bold text-center">
+            포트폴리오
+          </h2>
           <div className="grid xl:grid-cols-2 mt-32 gap-y-16">
             <div className="relative flex xl:flex-row flex-col items-center justify-center">
-              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_4px_4_rgb(0_0_0_/_25%)]">
+              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter w-[100px]">
                 (주)금강쿼츠 공장
               </span>
               <Image
@@ -34,7 +34,7 @@ export default function AboutUsPage() {
                 alt="금강쿼츠 공장"
                 height={450}
                 width={550}
-                className="h-[450px] my-auto xl:translate-x-[50%] -[450px] w-[550px]"
+                className="h-[450px] my-auto xl:translate-x-[50%] w-[550px]"
               />
             </div>
             <div className="w-full bg-primary h-[500px] xl:block hidden" />
@@ -47,12 +47,12 @@ export default function AboutUsPage() {
                 width={550}
                 className="h-[450px] w-[550px] my-auto xl:translate-x-[-50%]"
               />
-              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[-120%] text-3xl text-nowrap [text-shadow:_0_4px_4_rgb(0_0_0_/_25%)]">
+              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[-120%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter w-[125px]">
                 (주)레메디 사옥
               </span>
             </div>
             <div className="relative flex items-center justify-center xl:flex-row flex-col">
-              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_4px_4_rgb(0_0_0_/_25%)]">
+              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter w-[100px]">
                 (주)시너스 공장
               </span>
               <Image
@@ -73,7 +73,7 @@ export default function AboutUsPage() {
                 width={550}
                 className="h-[450px] w-[550px] my-auto xl:translate-x-[-50%]"
               />
-              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[-150%] text-3xl text-nowrap [text-shadow:_0_4px_4_rgb(0_0_0_/_25%)]">
+              <span className="xl:mr-0 xl:ml-auto xl:translate-x-[-150%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter w-[100px]">
                 (주)큐엠 공장
               </span>
             </div>
