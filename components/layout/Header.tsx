@@ -18,7 +18,7 @@ const Header = ({ session }: { session: Session | null }) => {
   });
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center
+      className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center hover:bg-white hover:shadow-xl
       transition-all duration-300 ease-out
       ${scrolled ? "bg-white shadow-xl" : "bg-primary shadow-none"}`}
     >
