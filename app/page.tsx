@@ -34,7 +34,7 @@ export default function Component() {
 
               <Link
                 href="easy-quote"
-                className="px-4 py-2 bg-primary text-primary transition-colors duration-300 font-medium hover:bg-yellow-500 font-gmarketSans block w-fit rounded-xl lg:text-xl text-base bg-white"
+                className="px-4 py-2 bg-primary text-primary transition-colors duration-300 font-medium hover:bg-yellow-500 block w-fit rounded-xl lg:text-xl text-base bg-white"
               >
                 7초 간편견적
               </Link>
@@ -86,10 +86,10 @@ export default function Component() {
             <MainCarousel />
           </div>
           <div className="w-screen absolute bottom-[0px] -left-[20%] right-0 bg-secondaryBlue -z-10 h-[200px] [@media(min-width:1800px)]:-left-[20vw] [@media(min-width:2000px)]:-left-[30vw] [@media(min-width:2500px)]:-left-[45vw] [@media(min-width:3000px)]:-left-[60vw] overflow-hidden">
-            <div className="absolute size-[400px] bottom-12 right-[45%] bg-tertiaryBlue rotate-45 blur-md" />
+            <div className="absolute size-[400px] bottom-12 right-[45%] 2xl:left-[55vw] bg-tertiaryBlue rotate-45 blur-md" />
           </div>
         </section>
-        <section className="w-full bg-[url('/main-warehouse.webp')] bg-cover bg-top bg-no-repeat h-[500px] flex overflow-hidden mt-12">
+        <section className="w-full warehouse bg-cover bg-top bg-no-repeat h-[500px] flex overflow-hidden mt-12">
           <MotionArticle />
         </section>
       </main>

@@ -7,18 +7,18 @@ import Image from "next/image";
 import blackLogo from "@/public/black-account.svg";
 import whiteLogo from "@/public/white-account.svg";
 import { cn } from "@/lib/utils";
+import { Session } from "next-auth";
 
-const Header = () => {
+const Header = ({ session }: { session: Session | null }) => {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 1 ? true : false);
   });
-
   return (
     <header
-      className={`fixed top-0 z-50 w-full text-white flex items-center justify-center
+      className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center
       transition-all duration-300 ease-out
       ${scrolled ? "bg-white shadow-xl" : "bg-primary shadow-none"}`}
     >
@@ -677,16 +677,19 @@ const Header = () => {
                 alt="Account link"
               />
             </Link>
-            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[75px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 bg-[url('/balloon.png')] bg-center bg-no-repeat bg-cover z-10">
-              <Link
-                href="/account"
-                className={cn(
-                  "hover-underline relative",
-                  scrolled && "text-primary"
-                )}
-              >
-                로그인
-              </Link>
+            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[75px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 balloon bg-center bg-no-repeat bg-cover z-10">
+              {!session && (
+                <Link
+                  href="/account"
+                  className={cn(
+                    "hover-underline relative",
+                    scrolled && "text-primary"
+                  )}
+                >
+                  로그인
+                </Link>
+              )}
+
               <Link
                 href="/account"
                 className={cn(
@@ -708,7 +711,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <MobileMenu />
+        <MobileMenu session={session} />
       </div>
     </header>
   );

@@ -7,8 +7,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +19,7 @@ const carouselArray = [
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/architecture.png",
+    image: "/ware-construction.webp",
   },
   {
     title: "인허가컨설팅",
@@ -41,7 +39,7 @@ const carouselArray = [
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/architecture.png",
+    image: "/ware-construction.webp",
   },
   {
     title: "인허가컨설팅",
@@ -61,7 +59,7 @@ const carouselArray = [
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/architecture.png",
+    image: "/ware-construction.webp",
   },
   {
     title: "인허가컨설팅",
@@ -81,7 +79,7 @@ const carouselArray = [
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/architecture.png",
+    image: "/ware-construction.webp",
   },
   {
     title: "인허가컨설팅",
@@ -101,7 +99,7 @@ const carouselArray = [
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/architecture.png",
+    image: "/ware-construction.webp",
   },
   {
     title: "인허가컨설팅",
@@ -123,7 +121,7 @@ export function MainCarousel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full mx-auto max-w-7xl -translate-y-12 lg:translate-x-20"
+      className="w-full mx-auto max-w-7xl -translate-y-12 lg:translate-x-20 "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={() => {
         plugin.current.play();
@@ -132,32 +130,32 @@ export function MainCarousel() {
         align: "start",
       }}
     >
-      <CarouselContent className="">
+      <CarouselContent className="bg-black-100">
         {carouselArray.map((carousel, i) => (
           <CarouselItem
-            className="basis-1/1 sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
+            className="basis-1/1 sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4 !border-none"
             key={carousel.title + i}
           >
             <Card
               className={cn(
-                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative",
+                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative !border-none",
                 carousel.image === "/blueprint.png" &&
-                  "bg-[url('/blueprint.png')] bg-cover bg-center bg-no-repeat",
-                carousel.image === "/architecture.png" &&
-                  "bg-[url('/architecture.png')] bg-cover bg-center bg-no-repeat",
+                  "blueprint bg-cover bg-center bg-no-repeat",
+                carousel.image === "/ware-construction.webp" &&
+                  "ware-construction bg-cover bg-center bg-no-repeat",
                 carousel.image === "/consulting.png" &&
-                  "bg-[url('/consulting.png')] bg-cover bg-center bg-no-repeat",
+                  "consulting bg-cover bg-center bg-no-repeat",
                 carousel.image === "/landscape.png" &&
-                  "bg-[url('/landscape.png')] bg-cover bg-center bg-no-repeat"
+                  "landscape bg-cover bg-center bg-no-repeat"
               )}
             >
               <CardContent
                 className={cn(
-                  "flex items-center justify-center bg-tertiaryGray/60 h-full w-full flex-col group-hover:h-[80px] bottom-0 absolute transition-all duration-200 origin-bottom"
+                  "bg-tertiaryGray/60 h-full w-full group-hover:h-[80px] group-hover:flex-justify-end bottom-0 absolute transition-all duration-200 origin-bottom !border-none p-4 flex items-end"
                 )}
               >
-                <p className="group-hover:flex flex-col gap-4 text-white items-start justify-center mt-auto font-bold hidden w-full">
-                  <span className="text-sm">{carousel.title}</span>
+                <p className="group-hover:flex flex-col gap-4 text-white items-start justify-end font-bold hidden w-full mt-auto mb-0 h-full bottom-0">
+                  <span className="text-sm mt-auto">{carousel.title}</span>
                   <span className="text-xs">{carousel.description}</span>
                 </p>
               </CardContent>

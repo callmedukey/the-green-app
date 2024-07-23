@@ -10,8 +10,9 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
+import type { Session } from "next-auth";
 
-const MobileMenu = () => {
+const MobileMenu = ({ session }: { session: Session | null }) => {
   const [open, setOpen] = useState(false);
 
   return (

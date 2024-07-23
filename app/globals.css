@@ -68,6 +68,50 @@
     @apply bg-background text-foreground;
   }
 
+  .balloon {
+    background-image: url("/balloon.png");
+  }
+
+  .tasks-construction {
+    background-image: url("/tasks-construction.webp");
+  }
+
+  .tasks-consulting {
+    background-image: url("/consulting.png");
+  }
+
+  .tasks-architecture {
+    background-image: url("/tasks-architecture.webp");
+  }
+
+  .tasks-landscape {
+    background-image: url("/tasks-landscape.webp");
+  }
+
+  .result {
+    background-image: url("/result.webp");
+  }
+
+  .warehouse {
+    background-image: url("/main-warehouse.webp");
+  }
+
+  .blueprint {
+    background-image: url("/blueprint.png");
+  }
+
+  .ware-construction {
+    background-image: url("/ware-construction.webp");
+  }
+
+  .consulting {
+    background-image: url("/consulting.png");
+  }
+
+  .landscape {
+    background-image: url("/landscape.png");
+  }
+
   .max-width-tg {
     @apply max-w-[1728px] mx-auto w-full;
   }

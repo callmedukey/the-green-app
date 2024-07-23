@@ -47,7 +47,7 @@ const page = async ({ searchParams }: { searchParams: { state: string } }) => {
 
   if (user?.role === "USER") {
     return (
-      <MainContainer title="My 더그린" img={MainBanner} imgAlt="Main Banner">
+      <MainContainer title="마이페이지" img={MainBanner} imgAlt="Main Banner">
         <CenterContainer className="w-full max-w-4xl mx-auto flex flex-col gap-4 items-center justify-center px-4">
           <AccountTabs userInfo={user} initialState={state} />
           <LogoutButton />

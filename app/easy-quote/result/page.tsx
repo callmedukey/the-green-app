@@ -31,7 +31,7 @@ export default async function EasyQuoteResult() {
         className="w-full mt-16"
       />
       <section
-        className="w-full bg-[url('/result.webp')] bg-center bg-cover bg-no-repeat scroll-mt-24 min-h-[calc(100dvh-9rem)] mt-32 mb-96"
+        className="w-full result bg-center bg-cover bg-no-repeat scroll-mt-24 min-h-[calc(100dvh-9rem)] mt-32 mb-96"
         id="main"
       >
         <div className="w-full h-full py-36">

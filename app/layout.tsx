@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import { Do_Hyeon, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-
+import HeaderWrapper from "@/components/layout/HeaderWrapper";
 
 const DoHyeon = Do_Hyeon({
   subsets: ["latin"],
@@ -56,9 +55,9 @@ export default function RootLayout({
           NotoSansKR.variable
         )}
       >
-        <Header />
+        <HeaderWrapper />
         {children}
-        
+
         <Footer />
       </body>
     </html>
