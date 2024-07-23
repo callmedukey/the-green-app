@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { MainCarousel } from "@/components/main/MainCarousel";
 import MotionArticle from "@/components/main/MotionArticle";
+import Warehouse from "@/public/main-warehouse.webp";
 import Image from "next/image";
 import KakaoIcon from "@/public/kakao.svg";
+import Remedy from "@/public/레메디.png";
+import AiGen from "@/public/ai-gen.png";
 
 export default function Component() {
   return (
@@ -42,17 +45,19 @@ export default function Component() {
             <div className="items-center justify-center lg:-translate-x-12 md:flex px-4 hidden">
               <Image
                 className="translate-y-48 md:translate-y-24 size-[300px] sm:size-[350px] lg:size-[400px] xl:w-[650px] xl:h-[460px] lg:translate-y-36 absolute alt-a-fade"
-                src="/레메디.png"
+                src={Remedy}
                 alt="easy-quote"
                 width={650}
                 height={452}
+                placeholder="blur"
                 priority
               />
 
               <Image
                 className="translate-y-48 md:translate-y-24 size-[300px] sm:size-[350px] lg:size-[400px] xl:size-[500px] lg:translate-y-36 absolute alt-b-fade"
-                src="/ai-gen.png"
+                src={AiGen}
                 alt="easy-quote"
+                placeholder="blur"
                 width={500}
                 height={452}
                 priority
@@ -85,11 +90,15 @@ export default function Component() {
             </div>
             <MainCarousel />
           </div>
-          <div className="w-screen absolute bottom-[0px] -left-[20%] right-0 bg-secondaryBlue -z-10 h-[200px] [@media(min-width:1800px)]:-left-[20vw] [@media(min-width:2000px)]:-left-[30vw] [@media(min-width:2500px)]:-left-[45vw] [@media(min-width:3000px)]:-left-[60vw] overflow-hidden">
-            <div className="absolute size-[400px] bottom-12 right-[45%] 2xl:left-[55vw] bg-tertiaryBlue rotate-45 blur-md" />
-          </div>
+          <div className="w-screen absolute bottom-[0px] -left-[20%] right-0 bg-orange -z-10 h-[200px] [@media(min-width:1800px)]:-left-[20vw] [@media(min-width:2000px)]:-left-[30vw] [@media(min-width:2500px)]:-left-[45vw] [@media(min-width:3000px)]:-left-[60vw] overflow-hidden"></div>
         </section>
-        <section className="w-full warehouse bg-cover bg-top bg-no-repeat h-[500px] flex overflow-hidden mt-12">
+        <section className="w-full relative h-[500px] flex overflow-hidden mt-12">
+          <Image
+            src={Warehouse}
+            alt="main-warehouse"
+            fill
+            className="object-fill -z-10"
+          />
           <MotionArticle />
         </section>
       </main>

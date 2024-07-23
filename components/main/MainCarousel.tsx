@@ -2,6 +2,11 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
+import BlueprintImage from "@/public/blueprint.png";
+import WareConstructionImage from "@/public/ware-construction.webp";
+import ConsultingImage from "@/public/consulting.png";
+import LandscapeImage from "@/public/landscape.png";
+
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -9,107 +14,108 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const carouselArray = [
   {
     title: "설계",
     description: "1평이라도 빈틈없는 설계",
-    image: "/blueprint.png",
+    image: BlueprintImage,
   },
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/ware-construction.webp",
+    image: WareConstructionImage,
   },
   {
     title: "인허가컨설팅",
     description: "실무경력 풍부한 행정사 자격 전문가",
-    image: "/consulting.png",
+    image: ConsultingImage,
   },
   {
     title: "조경",
     description: "건축과 하나인 조경구성",
-    image: "/landscape.png",
+    image: LandscapeImage,
   },
   {
     title: "설계",
     description: "1평이라도 빈틈없는 설계",
-    image: "/blueprint.png",
+    image: BlueprintImage,
   },
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/ware-construction.webp",
+    image: WareConstructionImage,
   },
   {
     title: "인허가컨설팅",
     description: "실무경력 풍부한 행정사 자격 전문가",
-    image: "/consulting.png",
+    image: ConsultingImage,
   },
   {
     title: "조경",
     description: "건축과 하나인 조경구성",
-    image: "/landscape.png",
+    image: LandscapeImage,
   },
   {
     title: "설계",
     description: "1평이라도 빈틈없는 설계",
-    image: "/blueprint.png",
+    image: BlueprintImage,
   },
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/ware-construction.webp",
+    image: WareConstructionImage,
   },
   {
     title: "인허가컨설팅",
     description: "실무경력 풍부한 행정사 자격 전문가",
-    image: "/consulting.png",
+    image: ConsultingImage,
   },
   {
     title: "조경",
     description: "건축과 하나인 조경구성",
-    image: "/landscape.png",
+    image: LandscapeImage,
   },
   {
     title: "설계",
     description: "1평이라도 빈틈없는 설계",
-    image: "/blueprint.png",
+    image: BlueprintImage,
   },
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/ware-construction.webp",
+    image: WareConstructionImage,
   },
   {
     title: "인허가컨설팅",
     description: "실무경력 풍부한 행정사 자격 전문가",
-    image: "/consulting.png",
+    image: ConsultingImage,
   },
   {
     title: "조경",
     description: "건축과 하나인 조경구성",
-    image: "/landscape.png",
+    image: LandscapeImage,
   },
   {
     title: "설계",
     description: "1평이라도 빈틈없는 설계",
-    image: "/blueprint.png",
+    image: BlueprintImage,
   },
   {
     title: "건축",
     description: "건축 견적 시공",
-    image: "/ware-construction.webp",
+    image: WareConstructionImage,
   },
   {
     title: "인허가컨설팅",
     description: "실무경력 풍부한 행정사 자격 전문가",
-    image: "/consulting.png",
+    image: ConsultingImage,
   },
   {
     title: "조경",
     description: "건축과 하나인 조경구성",
-    image: "/landscape.png",
+    image: LandscapeImage,
   },
 ];
 
@@ -138,17 +144,15 @@ export function MainCarousel() {
           >
             <Card
               className={cn(
-                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative !border-none",
-                carousel.image === "/blueprint.png" &&
-                  "blueprint bg-cover bg-center bg-no-repeat",
-                carousel.image === "/ware-construction.webp" &&
-                  "ware-construction bg-cover bg-center bg-no-repeat",
-                carousel.image === "/consulting.png" &&
-                  "consulting bg-cover bg-center bg-no-repeat",
-                carousel.image === "/landscape.png" &&
-                  "landscape bg-cover bg-center bg-no-repeat"
+                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative !border-none overflow-hidden"
               )}
             >
+              <Image
+                src={carousel.image}
+                alt={carousel.title}
+                fill
+                className="object-fill object-center group-hover:scale-[110%] transition-all duration-1000"
+              />
               <CardContent
                 className={cn(
                   "bg-tertiaryGray/60 h-full w-full group-hover:h-[80px] group-hover:flex-justify-end bottom-0 absolute transition-all duration-200 origin-bottom !border-none p-4 flex items-end"

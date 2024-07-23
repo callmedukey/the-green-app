@@ -15,6 +15,7 @@ const MotionArticle = () => {
           duration: 1.5,
         },
       }}
+      viewport={{ once: true }}
     >
       <div className="grid sm:grid-cols-[55%_45%] grid-cols-2 w-full">
         <div className="space-y-4">

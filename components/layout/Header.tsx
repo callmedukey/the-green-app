@@ -8,6 +8,7 @@ import blackLogo from "@/public/black-account.svg";
 import whiteLogo from "@/public/white-account.svg";
 import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
+import Balloon from "@/public/balloon.png";
 
 const Header = ({ session }: { session: Session | null }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,8 +19,8 @@ const Header = ({ session }: { session: Session | null }) => {
   });
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center hover:bg-white hover:shadow-xl
-      transition-all duration-300 ease-out
+      className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center hover:bg-white hover:shadow-xl hover:text-black
+      transition-all duration-300 ease-out group
       ${scrolled ? "bg-white shadow-xl" : "bg-primary shadow-none"}`}
     >
       <div className="h-20 flex items-center lg:justify-center max-width-tg sm:px-12 px-6">
@@ -59,6 +60,7 @@ const Header = ({ session }: { session: Session | null }) => {
               />
             </g>
             <path
+              className="group-hover:fill-black"
               fill={scrolled ? "black" : "white"}
               d="
   M 256.85 41.97
@@ -115,6 +117,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 371.69 54.82
   L 360.71 54.82
@@ -143,6 +146,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 218.58 19.74
   Q 229.63 19.75 240.38 19.76
@@ -167,6 +171,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 301.65 60.70
   Q 302.76 70.65 313.07 70.79
@@ -195,6 +200,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 430.71 60.85
   Q 431.52 69.80 440.52 70.69
@@ -224,6 +230,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 473.80 60.24
   Q 473.44 60.24 473.46 60.61
@@ -254,6 +261,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 519.20 42.43
   C 520.08 41.48 520.98 39.97 521.75 39.31
@@ -280,6 +288,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 403.41 43.40
   Q 404.14 41.46 405.25 40.01
@@ -371,6 +380,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <rect
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               x="456.29"
               y="83.16"
               width="6.32"
@@ -379,6 +389,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <ellipse
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               cx="0.00"
               cy="0.00"
               transform="translate(485.15,86.77) rotate(1.7)"
@@ -387,6 +398,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 475.51 94.63
   L 479.77 94.59
@@ -419,6 +431,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 356.39 113.83
   Q 360.09 114.66 363.29 112.46
@@ -436,6 +449,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 389.1034 108.0624
   A 11.28 11.28 0.0 0 1 377.4366 118.9419
@@ -460,6 +474,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 397.09 97.66
   C 398.93 95.47 400.54 94.28 403.85 94.11
@@ -486,6 +501,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 419.72 100.81
   C 419.97 105.47 431.45 103.62 430.88 111.71
@@ -508,6 +524,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 499.06 97.72
   A 0.32 0.31 -31.0 0 0 499.65 97.86
@@ -533,6 +550,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 532.20 96.87
   Q 532.85 97.83 532.87 96.66
@@ -562,6 +580,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 447.08 115.53
   C 445.00 117.99 442.94 119.12 439.28 118.92
@@ -587,6 +606,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <rect
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               x="481.94"
               y="94.61"
               width="6.28"
@@ -595,6 +615,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <rect
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               x="214.18"
               y="102.63"
               width="123.66"
@@ -613,6 +634,7 @@ const Header = ({ session }: { session: Session | null }) => {
             />
             <path
               fill={scrolled ? "black" : "white"}
+              className="group-hover:fill-black"
               d="
   M 210.12 105.05
   Q 210.46 105.32 210.79 105.77
@@ -628,7 +650,7 @@ const Header = ({ session }: { session: Session | null }) => {
             href="/about"
             className={cn(
               "hover-underline relative",
-              scrolled && "text-primary font-medium"
+              scrolled && "text-primary "
             )}
           >
             About 더그린
@@ -637,7 +659,7 @@ const Header = ({ session }: { session: Session | null }) => {
             href="/tasks"
             className={cn(
               "hover-underline relative",
-              scrolled && "text-primary font-medium"
+              scrolled && "text-primary "
             )}
           >
             사업분야
@@ -646,7 +668,7 @@ const Header = ({ session }: { session: Session | null }) => {
             href="/inquiry"
             className={cn(
               "hover-underline relative",
-              scrolled && "text-primary font-medium"
+              scrolled && "text-primary "
             )}
           >
             상세 견적 문의
@@ -655,7 +677,7 @@ const Header = ({ session }: { session: Session | null }) => {
             href="/booking"
             className={cn(
               "hover-underline relative",
-              scrolled && "text-primary font-medium"
+              scrolled && "text-primary "
             )}
           >
             현장 방문예약
@@ -663,21 +685,39 @@ const Header = ({ session }: { session: Session | null }) => {
 
           <Link
             href="/easy-quote"
-            className="px-4 py-2 bg-primary text-primary bg-white rounded-xl transition-colors duration-300 hover:bg-yellow-500"
+            className={cn(
+              "px-4 py-2 bg-primary text-primary bg-white rounded-xl transition-colors duration-300  group-hover:text-white group-hover:bg-primary ",
+              scrolled && "text-white bg-primary"
+            )}
           >
             7초 간편견적
           </Link>
           <div className="group relative">
             <Link href="/account" className="px-4">
               <Image
+                src={blackLogo}
+                width={35}
+                height={35}
+                className="hidden group-hover:block"
+                priority
+                alt="Account link"
+              />
+              <Image
                 src={scrolled ? blackLogo : whiteLogo}
                 width={35}
                 height={35}
+                className="group-hover:hidden"
                 priority
                 alt="Account link"
               />
             </Link>
-            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[75px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 balloon bg-center bg-no-repeat bg-cover z-10">
+            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[75px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 z-10">
+              <Image
+                src={Balloon}
+                fill
+                className="object-fill -z-10"
+                alt="balloon"
+              />
               {!session && (
                 <Link
                   href="/account"
