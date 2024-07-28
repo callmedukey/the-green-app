@@ -11,9 +11,22 @@ import Link from "next/link";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import type { Session } from "next-auth";
+import { cn } from "@/lib/utils";
+import { signOutUser } from "@/actions/actions";
 
-const MobileMenu = ({ session }: { session: Session | null }) => {
+const MobileMenu = ({
+  session,
+  scrolled,
+}: {
+  session: Session | null;
+  scrolled: boolean;
+}) => {
   const [open, setOpen] = useState(false);
+
+  const handleLogout = async () => {
+    await signOutUser();
+    setOpen(false);
+  };
 
   return (
     <Drawer direction="right" open={open} onOpenChange={setOpen}>
@@ -21,10 +34,33 @@ const MobileMenu = ({ session }: { session: Session | null }) => {
         className="ml-auto mr-0 lg:hidden"
         aria-label="모바일 메뉴"
       >
-        <Menu className="size-12 stroke-black mr-0 ml-auto lg:hidden" />
+        <Menu
+          className={cn(
+            "size-8 stroke-white mr-0 ml-auto lg:hidden group-hover:stroke-black",
+            scrolled && "stroke-black"
+          )}
+        />
       </DrawerTrigger>
-      <DrawerContent className="px-2 text-xl py-4 ">
-        <nav className="flex flex-col gap-4 px-4">
+      <DrawerContent className="text-xl">
+        <div className="grid grid-cols-2 items-center bg-primary py-3 px-6 text-white place-items-center divide-x-white divide-x-2">
+          {session ? (
+            <button
+              className="block w-full text-center font-bold"
+              onClick={handleLogout}
+              type="button"
+            >
+              로그아웃
+            </button>
+          ) : (
+            <Link href="/login" className="block w-full text-center font-bold">
+              로그인
+            </Link>
+          )}
+          <Link href="/register" className="block w-full text-center font-bold">
+            회원 가입
+          </Link>
+        </div>
+        <nav className="flex flex-col px-4 divide-y">
           <Link
             href="/about"
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
@@ -55,7 +91,7 @@ const MobileMenu = ({ session }: { session: Session | null }) => {
           </Link>
           <Link
             href="/easy-quote"
-            className="px-4 py-4 bg-primary text-white transition-colors duration-300 font-bold rounded-md hover:bg-yellow-500"
+            className="p-4 hover:bg-gray-200 transition-colors duration-300"
             onClick={() => setOpen(false)}
           >
             7초 간편견적

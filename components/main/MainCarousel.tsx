@@ -127,7 +127,7 @@ export function MainCarousel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full mx-auto max-w-7xl -translate-y-12 lg:translate-x-20 "
+      className="w-full mx-auto max-w-7xl -translate-y-12 xl:translate-x-20"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={() => {
         plugin.current.play();

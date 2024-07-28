@@ -23,26 +23,36 @@ export default function Component() {
             height={80}
           />
         </a>
-        <section className="w-full py-12 md:px-8 lg:px-20 bg-primary h-[80dvh] max-h-[600px]">
-          <div className="h-16 xl:hidden" />
-          <div className="grid md:grid-cols-2 w-full max-width-tg">
-            <div className="max-w-7xl xl:mt-56 md:mt-12 flex items-center justify-center flex-col h-full xl:items-start xl:justify-start space-y-6 px-4">
-              <h1 className="text-4xl xl:text-6xl tracking-wide text-white font-bold">
+        <section className="w-full py-12 md:px-8 lg:px-20 bg-primary min-h-[80dvh]">
+          <div className="grid xl:grid-cols-2 w-full max-width-tg">
+            <Image
+              className="brightness-[40%] xl:hidden w-full"
+              src={Remedy}
+              alt="easy-quote"
+              width={650}
+              height={452}
+              placeholder="blur"
+              priority
+            />
+
+            <div className="max-w-7xl xl:mt-56 md:mt-12 flex flex-col h-full items-start justify-start space-y-6 px-6 py-8">
+              <h1 className="text-[2rem] xl:text-6xl tracking-wide text-white font-bold">
                 7초 간편견적계산
               </h1>
-              <p className="text-white text-xl flex flex-col gap-2 items-center justify-center text-center xl:items-start">
+              <p className="text-white xl:text-xl text-base xl:flex xl:flex-col xl:gap-2 items-center xl:justify-center xl:text-center xl:items-start gap-0 font-medium xl:font-normal">
                 <span>업계 최초 투명 견적 시스템</span>
+                <span className="xl:hidden"> </span>
                 <span>7초 간편 견적으로 예상 건축 비용을 확인해 보세요</span>
               </p>
 
               <Link
                 href="easy-quote"
-                className="px-4 py-2 bg-primary text-primary transition-colors duration-300 font-medium hover:bg-yellow-500 block w-fit rounded-xl lg:text-xl text-base bg-white"
+                className="px-4 py-2 bg-primary text-primary transition-colors duration-300 xl:font-medium font-bold hover:bg-yellow-500 block w-fit rounded-xl lg:text-xl text-base bg-white mx-auto !mt-[4.5rem] !xl:mt-0 xl:ml-0"
               >
                 7초 간편견적
               </Link>
             </div>
-            <div className="items-center justify-center lg:-translate-x-12 md:flex px-4 hidden">
+            <div className="items-center justify-center lg:-translate-x-12 xl:flex px-4 hidden">
               <Image
                 className="translate-y-48 md:translate-y-24 size-[300px] sm:size-[350px] lg:size-[400px] xl:w-[650px] xl:h-[460px] lg:translate-y-36 absolute alt-a-fade"
                 src={Remedy}
@@ -66,14 +76,14 @@ export default function Component() {
           </div>
         </section>
         <section className="max-width-tg relative">
-          <div className="relative">
-            <div className="sm:px-16 xl:px-24 mt-20 space-y-6 px-4 grid lg:grid-cols-2 items-center py-12">
-              <div className="">
-                <h2 className="flex flex-col text-[32px] font-bold">
-                  <span className="text-mainGray leading-[1rem]">
+          <div className="relative overflow-hidden">
+            <div className="px-6 xl:px-24 xl:mt-20 space-y-6 grid lg:grid-cols-2 items-center xl:py-12 py-8">
+              <div className="flex flex-col gap-8 xl:gap-0">
+                <h2 className="flex flex-col text-[2rem] font-bold">
+                  <span className="text-mainGray xl:leading-[1rem]">
                     훼손지 토지주를 위한
                   </span>
-                  <span className="text-secondaryGray leading-[3.5rem]">
+                  <span className="text-secondaryGray xl:leading-[3.5rem]">
                     성공 파트너 역량
                   </span>
                 </h2>
@@ -83,21 +93,21 @@ export default function Component() {
                 </p>
               </div>
               <div>
-                <h3 className="text-[96px] font-bold text-zzinMakGray text-right -translate-y-10 hidden lg:block">
+                <h3 className="text-[96px] font-bold text-zzinMakGray text-right -translate-y-10 hidden xl:block">
                   Business
                 </h3>
               </div>
             </div>
             <MainCarousel />
           </div>
-          <div className="w-screen absolute bottom-[0px] -left-[20%] right-0 bg-orange -z-10 h-[200px] [@media(min-width:1800px)]:-left-[20vw] [@media(min-width:2000px)]:-left-[30vw] [@media(min-width:2500px)]:-left-[45vw] [@media(min-width:3000px)]:-left-[60vw] overflow-hidden"></div>
+          <div className="xl:w-screen w-[90vw] left-[5vw] right-[5vw]  absolute bottom-[0px] xl:-left-[20%] bg-orange -z-10 xl:h-[200px] h-[150px] [@media(min-width:1800px)]:-left-[20vw] [@media(min-width:2000px)]:-left-[30vw] [@media(min-width:2500px)]:-left-[45vw] [@media(min-width:3000px)]:-left-[60vw] overflow-hidden" />
         </section>
-        <section className="w-full relative h-[500px] flex overflow-hidden mt-12">
+        <section className="w-full relative xl:h-[500px] flex overflow-hidden mt-12 h-fit py-8">
           <Image
             src={Warehouse}
             alt="main-warehouse"
             fill
-            className="object-fill -z-10"
+            className="object-fill object-center -z-10"
           />
           <MotionArticle />
         </section>

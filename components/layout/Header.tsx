@@ -686,7 +686,7 @@ const Header = ({ session }: { session: Session | null }) => {
           <Link
             href="/easy-quote"
             className={cn(
-              "px-4 py-2 bg-primary text-primary bg-white rounded-xl transition-colors duration-300  group-hover:text-white group-hover:bg-primary ",
+              "px-4 py-2 bg-primary text-primary bg-white rounded-xl transition-colors duration-300  group-hover:text-white group-hover:bg-primary",
               scrolled && "text-white bg-primary"
             )}
           >
@@ -751,7 +751,7 @@ const Header = ({ session }: { session: Session | null }) => {
             </div>
           </div>
         </nav>
-        <MobileMenu session={session} />
+        <MobileMenu session={session} scrolled={scrolled} />
       </div>
     </header>
   );
