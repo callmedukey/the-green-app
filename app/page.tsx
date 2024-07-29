@@ -25,7 +25,7 @@ export default function Component() {
             height={80}
           />
         </a>
-        <section className="w-full py-12 md:px-8 lg:px-20 bg-primary min-h-[80dvh]">
+        <section className="w-full py-12 md:px-8 lg:px-16 bg-primary h-[90dvh] max-h-[700px]">
           <div className="grid xl:grid-cols-[40%_60%] w-full max-width-tg">
             <Image
               className="brightness-[40%] xl:hidden w-full"
@@ -56,7 +56,7 @@ export default function Component() {
               </Link>
             </div>
             <div className="items-center justify-center lg:-translate-x-12 xl:flex px-4 hidden">
-              <div className="relative h-[40rem] w-[60rem] translate-y-[6.5rem] hidden xl:block">
+              <div className="relative h-[40rem] w-[50rem] translate-y-[6.5rem] hidden xl:block">
                 <Image
                   className="absolute object-center object-fill alt-a-fade "
                   src={Remedy}

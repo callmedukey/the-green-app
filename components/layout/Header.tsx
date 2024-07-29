@@ -716,7 +716,7 @@ const Header = ({ session }: { session: Session | null }) => {
                 alt="Account link"
               />
             </Link>
-            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[85px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 z-10">
+            <div className="group-hover:flex hidden absolute -bottom-[95px] w-[5.5rem] h-[6.875rem] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 z-10 left-0 right-0 translate-x-[-29%]">
               <Image
                 src={Balloon}
                 fill

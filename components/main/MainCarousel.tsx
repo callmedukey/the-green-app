@@ -152,7 +152,7 @@ export function MainCarousel() {
                 alt={carousel.title}
                 fill
                 quality={100}
-                className="object-fill object-center origin-center group-hover:scale-[125%] transition-all duration-1000"
+                className="object-fill object-center origin-bottom group-hover:scale-[130%] transition-all duration-500"
               />
               <CardContent
                 className={cn(
