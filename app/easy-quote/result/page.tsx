@@ -31,7 +31,7 @@ export default async function EasyQuoteResult() {
         className="w-full mt-16"
       />
       <section
-        className="w-full relative scroll-mt-24 min-h-[calc(100dvh-9rem)] mt-32 mb-96"
+        className="w-full relative scroll-mt-24 min-h-[calc(100dvh-9rem)] max-h-[62.5rem] mt-32 mb-96"
         id="main"
       >
         <Image
@@ -40,38 +40,36 @@ export default async function EasyQuoteResult() {
           fill
           className="object-fill -z-10"
         />
-        <div className="w-full h-full py-36">
+        <div className="w-full h-full py-36 max-width-tg">
           <div className="grid lg:grid-cols-2 lg:divide-x divide-black gap-y-24">
-            <div className="flex flex-col items-start justify-center px-16 gap-4">
-              <div className="m-auto space-y-6">
-                <h1 className="text-[40px] font-bold text-center mb-[100px] text-quadGray">
-                  견적 결과
+            <div className="flex flex-col items-start justify-center xl:px-16 gap-4 md:px-8 sm:px-4 w-full">
+              <div className="xl:m-auto mx-auto px-4 sm:px-0">
+                <h1 className="text-[2.5rem] font-bold text-quadGray">
+                  간편 견적 결과
                 </h1>
-                <div className="grid grid-cols-[40%_60%] w-[420px] h-[130px] bg-primary rounded-[10px] text-white px-8 py-6 gap-y-4 text-xl font-doHyeon">
+                <div className="grid grid-cols-[40%_60%] xl:w-[420px] h-[130px] bg-primary rounded-[10px] text-white px-4 sm:px-8 py-6 gap-y-4 text-xl font-doHyeon mt-6 font-semibold">
                   <div className="">총금액</div>
                   <div className="">{price.toLocaleString()}원</div>
                   <div className="">평수</div>
                   <div className="">{pyeong}평</div>
                 </div>
-                <p className="max-w-[430px] text-base break-keep tracking-[3%] text-quadGray">
-                  간편 건축 비용은 대략적인 건축 비용이며 건축면적 크리와 여건에
-                  따라 가감이 발생할 수 있습니다. 정확한 상세 건축비 용이
-                  궁금하시면 선택 두 가지 중 하나를 선택하시기 바랍니다.
+                <p className="max-w-[430px] text-base break-keep font-bold tracking-[3%]">
+                  * 상기 금액은 건축평수와 공사여건에 따라 가감될 수 있음
                 </p>
               </div>
             </div>
-            <div className="grid xl:px-32 px-16 gap-x-32 lg:h-[450px] place-items-center sm:grid-cols-2">
-              <div className="col-span-2 text-center">
-                <h2 className="font-bold text-[40px] tracking-[10%] text-quadGray">
-                  정확한 건축 견적 상담은
+            <div className="grid xl:px-32 md:px-16 px-8 xl:gap-x-32 lg:gap-x-24 sm:gap-x-16 gap-x-4 lg:h-[250px] place-items-center sm:grid-cols-2">
+              <div className="col-span-2 w-full mb-6">
+                <h2 className="font-bold text-[2.5rem] tracking-[10%] text-quadGray">
+                  상세 견적상담은
                 </h2>
-                <p className="text-xl tracking-[3%] font-medium text-white max-w-[365px] mx-auto w-full text-left">
-                  상세 견적문의 또는 현장 방문 예약을 통해서 속시원히 확인
+                <p className="text-xl tracking-[3%] font-medium text-white max-w-[325px] w-full text-left">
+                  아래 현장방문예약 또는 상세견적문의 로 바로가기 하심 됩니다
                   가능합니다
                 </p>
               </div>
-              <div className="space-y-6  text-nowrap">
-                <h3 className="text-[32px] font-medium tracking-[10%] text-quadGray">
+              <div className="text-nowrap w-full col-span-2 sm:col-span-1">
+                <h3 className="text-[1.75rem] font-medium tracking-[10%] text-quadGray">
                   현장방문예약
                 </h3>
                 <p className="flex flex-col text-white text-base font-medium tracking-[3%] leading-[20px]">
@@ -86,8 +84,8 @@ export default async function EasyQuoteResult() {
                   <Play fill="white" className="size-3" />
                 </Link>
               </div>
-              <div className="space-y-6 text-nowrap">
-                <h3 className="text-[32px] font-medium tracking-[10%] text-quadGray">
+              <div className="text-nowrap w-full col-span-2 sm:col-span-1">
+                <h3 className="text-[1.75rem] font-medium tracking-[10%] text-quadGray">
                   상세견적문의
                 </h3>
                 <p className="flex flex-col text-white text-base font-medium tracking-[3%] leading-[20px]">

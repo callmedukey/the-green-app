@@ -9,6 +9,7 @@ import whiteLogo from "@/public/white-account.svg";
 import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
 import Balloon from "@/public/balloon.png";
+import { signOutUser } from "@/actions/actions";
 
 const Header = ({ session }: { session: Session | null }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,6 +18,10 @@ const Header = ({ session }: { session: Session | null }) => {
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 1 ? true : false);
   });
+
+  const handleLogout = async () => {
+    await signOutUser();
+  };
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full text-white flex items-center justify-center hover:bg-white hover:shadow-xl hover:text-black
@@ -711,7 +716,7 @@ const Header = ({ session }: { session: Session | null }) => {
                 alt="Account link"
               />
             </Link>
-            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[75px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 z-10">
+            <div className="group-hover:flex hidden absolute -bottom-[95px] right-[-20px] w-[85px] h-[110px] text-primary text-sm  flex-col items-center gap-2 py-4 justify-center font-bold transition-all duration-300 z-10">
               <Image
                 src={Balloon}
                 fill
@@ -729,16 +734,26 @@ const Header = ({ session }: { session: Session | null }) => {
                   로그인
                 </Link>
               )}
-
-              <Link
-                href="/account"
-                className={cn(
-                  "hover-underline relative",
-                  scrolled && "text-primary"
-                )}
-              >
-                회원가입
-              </Link>
+              {!session && (
+                <Link
+                  href="/account"
+                  className={cn(
+                    "hover-underline relative",
+                    scrolled && "text-primary"
+                  )}
+                >
+                  회원가입
+                </Link>
+              )}
+              {session && (
+                <button
+                  className="block w-full text-center font-bold"
+                  onClick={handleLogout}
+                  type="button"
+                >
+                  로그아웃
+                </button>
+              )}
               <Link
                 href="/account"
                 className={cn(

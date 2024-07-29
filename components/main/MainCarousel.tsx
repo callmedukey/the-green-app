@@ -2,10 +2,10 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
-import BlueprintImage from "@/public/blueprint.png";
-import WareConstructionImage from "@/public/ware-construction.webp";
-import ConsultingImage from "@/public/consulting.png";
-import LandscapeImage from "@/public/landscape.png";
+import BlueprintImage from "@/public/설계.png";
+import WareConstructionImage from "@/public/건축.jpg";
+import ConsultingImage from "@/public/인허가 컨설팅.png";
+import LandscapeImage from "@/public/조경.png";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -144,21 +144,22 @@ export function MainCarousel() {
           >
             <Card
               className={cn(
-                "h-[200px] w-[230px] hover:scale-y-[120%] origin-bottom transition-all duration-300 group relative !border-none overflow-hidden"
+                "h-[200px] w-[230px] hover:scale-y-[130%] origin-bottom transition-all duration-500 group relative !border-none overflow-hidden"
               )}
             >
               <Image
                 src={carousel.image}
                 alt={carousel.title}
                 fill
-                className="object-fill object-center group-hover:scale-[110%] transition-all duration-1000"
+                quality={100}
+                className="object-fill object-center origin-center group-hover:scale-[125%] transition-all duration-1000"
               />
               <CardContent
                 className={cn(
                   "bg-tertiaryGray/60 h-full w-full group-hover:h-[80px] group-hover:flex-justify-end bottom-0 absolute transition-all duration-200 origin-bottom !border-none p-4 flex items-end"
                 )}
               >
-                <p className="group-hover:flex flex-col gap-4 text-white items-start justify-end font-bold hidden w-full mt-auto mb-0 h-full bottom-0">
+                <p className="flex flex-col gap-4 text-white items-start justify-end font-bold w-full mt-auto mb-0 h-full bottom-0">
                   <span className="text-sm mt-auto">{carousel.title}</span>
                   <span className="text-xs">{carousel.description}</span>
                 </p>

@@ -52,11 +52,19 @@ const MobileMenu = ({
               로그아웃
             </button>
           ) : (
-            <Link href="/login" className="block w-full text-center font-bold">
+            <Link
+              href="/login"
+              className="block w-full text-center font-bold"
+              onClick={() => setOpen(false)}
+            >
               로그인
             </Link>
           )}
-          <Link href="/register" className="block w-full text-center font-bold">
+          <Link
+            href="/register"
+            className="block w-full text-center font-bold"
+            onClick={() => setOpen(false)}
+          >
             회원 가입
           </Link>
         </div>

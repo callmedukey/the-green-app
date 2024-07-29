@@ -49,7 +49,7 @@ export default function RootLayout({
     <html lang="ko">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased font-medium max-width-tg overflow-x-hidden",
           gmarketSans.variable,
           DoHyeon.variable,
           NotoSansKR.variable

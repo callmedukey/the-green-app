@@ -207,7 +207,7 @@ const InquiryForm = () => {
             render={({ field }) => (
               <FormItem className="relative">
                 <FormLabel className="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                  <span className="bg-gray-300 font-bold px-2 py-0.5 block">
+                  <span className="bg-gray-300 font-bold px-2 py-0.5 block min-w-fit">
                     파일 선택
                   </span>
                   <span className="block ml-2 truncate max-w-[100px]">
@@ -244,7 +244,7 @@ const InquiryForm = () => {
             render={({ field }) => (
               <FormItem className="relative">
                 <FormLabel className="cursor-pointer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                  <span className="bg-gray-300 font-bold px-2 py-0.5 block">
+                  <span className="bg-gray-300 font-bold px-2 py-0.5 block min-w-fit">
                     파일 선택
                   </span>
                   <span className="block ml-2 truncate max-w-[100px]">

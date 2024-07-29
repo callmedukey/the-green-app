@@ -6,7 +6,7 @@ import Link from "next/link";
 const MotionArticle = () => {
   return (
     <motion.article
-      className="flex flex-col sm:bg-mainBlue/40 mr-0 ml-auto text-white justify-center sm:gap-[6.25rem] xl:px-[9rem] lg:w-[49.40%] w-full px-6 sm:px-12 gap-5"
+      className="flex flex-col sm:bg-mainBlue/40 mr-0 ml-auto text-white justify-center sm:gap-[6.25rem] xl:px-[9rem] lg:w-[49.40%] w-full px-6 sm:px-12 gap-5 py-8"
       initial={{ opacity: 0, x: 100 }}
       whileInView={{
         opacity: 1,

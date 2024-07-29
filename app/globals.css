@@ -103,10 +103,13 @@
   }
 
   .alt-a-fade {
-    animation: alt-a-fade 10s ease-in-out infinite;
+    animation: alt-a-fade 18s ease-in-out infinite;
   }
   .alt-b-fade {
-    animation: alt-b-fade 10s ease-in-out infinite;
+    animation: alt-b-fade 18s ease-in-out infinite;
+  }
+  .alt-c-fade {
+    animation: alt-c-fade 18s ease-in-out infinite;
   }
 
   @keyframes fade-in {
@@ -122,13 +125,10 @@
     0% {
       opacity: 1;
     }
-    25% {
-      opacity: 1;
-    }
-    50% {
+    33% {
       opacity: 0;
     }
-    75% {
+    66% {
       opacity: 0;
     }
     100% {
@@ -139,13 +139,25 @@
     0% {
       opacity: 0;
     }
-    25% {
-      opacity: 0;
-    }
-    50% {
+    33% {
       opacity: 1;
     }
-    75% {
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes alt-c-fade {
+    0% {
+      opacity: 0;
+    }
+    33% {
+      opacity: 0;
+    }
+    66% {
       opacity: 1;
     }
     100% {

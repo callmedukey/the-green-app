@@ -19,7 +19,7 @@ const regex = /^[0-9]+$/;
 const phoneRegex = /^[0-9-]+$/;
 
 const QuoteSchema = z.object({
-  name: z.string().min(2, { message: "성함을 입력해주세요" }),
+  name: z.string().min(2, { message: "이름을 입력해주세요" }),
   phone: z
     .string()
     .min(11, { message: "휴대전화 번호를 입력해주세요" })
@@ -61,7 +61,7 @@ const EasyQuoteStepOne = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-xl w-full">
         <div className="md:grid-cols-2 grid">
           <fieldset className="space-y-4">
             <FormField
@@ -69,9 +69,9 @@ const EasyQuoteStepOne = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>성함</FormLabel>
+                  <FormLabel>이름</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="성함을 입력해주세요" />
+                    <Input {...field} placeholder="이름을 입력해주세요" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -98,7 +98,7 @@ const EasyQuoteStepOne = () => {
               name="pyeong"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>평수</FormLabel>
+                  <FormLabel>총건축면적</FormLabel>
                   <FormControl>
                     <Input {...field} placeholder="평수를 입력해주세요" />
                   </FormControl>
@@ -109,7 +109,7 @@ const EasyQuoteStepOne = () => {
           </fieldset>
           <div className="flex items-center justify-center">
             <Button className="md:max-w-[150px] md:h-full  md:max-h-[60px] w-full my-6">
-              결과보기
+              계산하기
             </Button>
           </div>
         </div>
