@@ -14,7 +14,7 @@ export default function Component() {
       <main className="">
         <a
           href="https://pf.kakao.com/_BhMHG"
-          className="fixed bottom-[5dvh] right-4 z-20"
+          className="fixed bottom-[5dvh] right-4 [@media(min-width:1728px)]:right-24 z-20"
           target="_blank"
         >
           <Image
