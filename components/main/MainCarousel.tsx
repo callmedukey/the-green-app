@@ -4,7 +4,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 import BlueprintImage from "@/public/설계.png";
 import WareConstructionImage from "@/public/건축.jpg";
-import ConsultingImage from "@/public/인허가 컨설팅.png";
+import ConsultingImage from "@/public/인허가_컨설팅.png";
 import LandscapeImage from "@/public/조경.png";
 
 import { Card, CardContent } from "@/components/ui/card";
