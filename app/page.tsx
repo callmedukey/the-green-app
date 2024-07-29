@@ -25,7 +25,7 @@ export default function Component() {
             height={80}
           />
         </a>
-        <section className="w-full py-12 md:px-8 lg:px-16 bg-primary h-[90dvh] max-h-[700px]">
+        <section className="w-full py-12 md:px-8 lg:px-16 bg-primary [@media(max-width:1200px)]:min-h-[90dvh] xl:max-h-[700px]">
           <div className="grid xl:grid-cols-[40%_60%] w-full max-width-tg">
             <Image
               className="brightness-[40%] xl:hidden w-full"
@@ -37,7 +37,7 @@ export default function Component() {
               priority
             />
 
-            <div className="max-w-7xl xl:mt-56 md:mt-12 flex flex-col h-full items-start justify-start space-y-6 px-6 py-8">
+            <div className="max-w-7xl xl:mt-56 md:mt-12 flex flex-col h-full items-start justify-start xl:space-y-6 px-6 xl:py-8 space-y-2">
               <h1 className="text-[2rem] xl:text-6xl tracking-wide text-white font-bold">
                 <span className="text-[9rem] tracking-[-2rem]">7</span>
                 <span className="text-[0.65em]">초</span> 간편견적계산
