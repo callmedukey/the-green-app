@@ -5,6 +5,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/layout/Footer";
 import HeaderWrapper from "@/components/layout/HeaderWrapper";
+import Image from "next/image";
+import KakaoIcon from "@/public/kakao.svg";
 
 const DoHyeon = Do_Hyeon({
   subsets: ["latin"],
@@ -57,7 +59,19 @@ export default function RootLayout({
       >
         <HeaderWrapper />
         {children}
-
+        <a
+          href="https://pf.kakao.com/_BhMHG"
+          className="fixed bottom-[5dvh] right-4 [@media(min-width:1728px)]:right-[10vw] [@media(min-width:2171px)]:right-[15vw]  [@media(min-width:2400px)]:right-[20vw]  [@media(min-width:2900px)]:right-[25vw]  z-20"
+          target="_blank"
+        >
+          <Image
+            src={KakaoIcon}
+            alt="카카오 채널 링크"
+            width={80}
+            quality={100}
+            height={80}
+          />
+        </a>
         <Footer />
       </body>
     </html>

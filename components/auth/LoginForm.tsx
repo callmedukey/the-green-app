@@ -92,7 +92,7 @@ const LoginForm = ({ cameFromQuote }: { cameFromQuote?: string }) => {
             아이디 찾기
           </Link>
           <Link href="/reset-password" className="">
-            비밀번호 초기화
+            비밀번호 재설정
           </Link>
         </div>
       </form>

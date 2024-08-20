@@ -60,13 +60,23 @@ const MobileMenu = ({
               로그인
             </Link>
           )}
-          <Link
-            href="/register"
-            className="block w-full text-center font-bold"
-            onClick={() => setOpen(false)}
-          >
-            회원 가입
-          </Link>
+          {session ? (
+            <Link
+              href="/account?state=current"
+              className="block w-full text-center font-bold"
+              onClick={() => setOpen(false)}
+            >
+              마이페이지
+            </Link>
+          ) : (
+            <Link
+              href="/register"
+              className="block w-full text-center font-bold"
+              onClick={() => setOpen(false)}
+            >
+              회원 가입
+            </Link>
+          )}
         </div>
         <nav className="flex flex-col px-4 divide-y">
           <Link
@@ -81,7 +91,7 @@ const MobileMenu = ({
             className="p-4 hover:bg-gray-200 transition-colors duration-300"
             onClick={() => setOpen(false)}
           >
-            주요 업무
+            사업분야
           </Link>
           <Link
             href="/booking"

@@ -10,6 +10,7 @@ import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
 import { cookies } from "next/headers";
 import { SolapiMessageService } from "solapi";
 import { z } from "zod";
+import { KakaoTemplates } from "@/lib/kakaoTemplates";
 
 export async function checkUsername({ username }: { username: string }) {
   try {
@@ -185,6 +186,23 @@ export const registerUser = async ({
     if (!created) {
       return { error: "회원가입 실패" };
     }
+
+    const solapi = new SolapiMessageService(
+      process.env.SOLAPI_API_KEY!,
+      process.env.SOLAPI_API_SECRET!
+    );
+    await solapi.sendOne({
+      to: phone,
+      from: process.env.SOLAPI_SENDER_PHONE_NUMBER!,
+      kakaoOptions:{
+        pfId:process.env.SOLAPI_PFID!,
+        templateId:KakaoTemplates.SIGNUP,
+        disableSms:false,
+        variables: {
+          "#{name}": name,
+        },
+      },
+    });
 
     return {
       message: "회원가입 성공",

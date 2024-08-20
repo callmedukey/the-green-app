@@ -27,6 +27,7 @@ const AdminUserControlPage = async ({
 
   return (
     <CenterContainer className="max-w-4xl px-4 py-16 flex flex-col gap-4 min-h-[100dvh]">
+      <div className="h-16 w-full" />
       <UserStatusControlForm userId={user.id} userStatus={user.userStatus} />
       <div className="grid grid-cols-2 gap-4">
         <div>

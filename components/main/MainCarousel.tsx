@@ -24,7 +24,7 @@ const carouselArray = [
   },
   {
     title: "건축",
-    description: "건축 견적 시공",
+    description: "책임견적시공",
     image: WareConstructionImage,
   },
   {
@@ -44,7 +44,7 @@ const carouselArray = [
   },
   {
     title: "건축",
-    description: "건축 견적 시공",
+    description: "책임견적시공",
     image: WareConstructionImage,
   },
   {
@@ -64,7 +64,7 @@ const carouselArray = [
   },
   {
     title: "건축",
-    description: "건축 견적 시공",
+    description: "책임견적시공",
     image: WareConstructionImage,
   },
   {
@@ -84,7 +84,7 @@ const carouselArray = [
   },
   {
     title: "건축",
-    description: "건축 견적 시공",
+    description: "책임 견적 시공",
     image: WareConstructionImage,
   },
   {
@@ -104,7 +104,7 @@ const carouselArray = [
   },
   {
     title: "건축",
-    description: "건축 견적 시공",
+    description: "책임견적시공",
     image: WareConstructionImage,
   },
   {
@@ -144,7 +144,7 @@ export function MainCarousel() {
           >
             <Card
               className={cn(
-                "h-[200px] w-[230px] hover:scale-y-[130%] origin-bottom transition-all duration-500 group relative !border-none overflow-hidden"
+                "h-[270px] w-[250px] hover:scale-y-[130%] origin-bottom transition-all duration-500 group relative !border-none overflow-hidden"
               )}
             >
               <Image
@@ -156,12 +156,12 @@ export function MainCarousel() {
               />
               <CardContent
                 className={cn(
-                  "bg-tertiaryGray/60 h-full w-full group-hover:h-[80px] group-hover:flex-justify-end bottom-0 absolute transition-all duration-200 origin-bottom !border-none p-4 flex items-end"
+                  "bg-tertiaryGray/60 h-full w-full group-hover:h-[80px] group-hover:flex-justify-end bottom-0 absolute transition-all duration-200 origin-bottom !border-none p-4 flex"
                 )}
               >
                 <p className="flex flex-col gap-4 text-white items-start justify-end font-bold w-full mt-auto mb-0 h-full bottom-0">
                   <span className="text-sm mt-auto">{carousel.title}</span>
-                  <span className="text-xs">{carousel.description}</span>
+                  <span className="text-xs mb-2">{carousel.description}</span>
                 </p>
               </CardContent>
             </Card>

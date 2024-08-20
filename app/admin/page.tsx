@@ -54,6 +54,7 @@ const AdminPage = async () => {
 
   return (
     <CenterContainer className="px-4 pt-16 w-full max-w-4xl min-h-screen">
+      <div className="h-16 w-full" />
       <AdminTabs
         users={users}
         inquiries={inquiries}

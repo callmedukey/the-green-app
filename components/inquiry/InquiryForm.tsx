@@ -42,6 +42,7 @@ export const InquiryPlanSchema = z.object({
 });
 
 const InquiryForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof InquiryPlanSchema>>({
     resolver: zodResolver(InquiryPlanSchema),
     defaultValues: {
@@ -55,6 +56,7 @@ const InquiryForm = () => {
   const [fileError, setFileError] = useState<string>("");
 
   const onSubmit = async (data: z.infer<typeof InquiryPlanSchema>) => {
+    setIsSubmitting(true);
     if (data.file1 || data.file2) {
       const file1 = data.file1?.[0];
       const file2 = data.file2?.[0];
@@ -96,6 +98,8 @@ const InquiryForm = () => {
       } catch (error) {
         console.log(error);
         alert("문의 등록 오류, 유선 문의 부탁드리겠습니다.");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -128,7 +132,7 @@ const InquiryForm = () => {
                         <RadioGroupItem value="PLAN" />
                       </FormControl>
                       <FormLabel className="font-normal">
-                        건춘견적관련
+                        건축견적관련
                       </FormLabel>
                     </FormItem>
                     <FormItem className="flex items-center space-x-2 space-y-0 sm:space-x-3">
@@ -277,7 +281,9 @@ const InquiryForm = () => {
           />
         </fieldset>
         {fileError && <p className="text-red-500">{fileError}</p>}
-        <Button className="w-full">제출하기</Button>
+        <Button className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? "제출중..." : "제출하기"}
+        </Button>
       </form>
     </Form>
   );

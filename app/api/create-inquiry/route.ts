@@ -7,6 +7,8 @@ import testValidPhoneNumber from "@/lib/testValidPhoneNumber";
 import { InquiryType } from "@prisma/client";
 import { writeFile } from "fs/promises";
 import { renameFileWithExtension } from "@/lib/renameFile";
+import { SolapiMessageService } from "solapi";
+import { KakaoTemplates } from "@/lib/kakaoTemplates";
 
 const InquiryPlanSchema = z.object({
   name: z.string().min(2, { message: "성함을 입력해주세요." }),
@@ -139,6 +141,24 @@ export async function POST(req: NextRequest) {
         );
       }
     }
+
+    const solapi = new SolapiMessageService(
+      process.env.SOLAPI_API_KEY!,
+      process.env.SOLAPI_API_SECRET!
+    );
+
+    await solapi.sendOne({
+      to: parsed.phone,
+      from: process.env.SOLAPI_PHONE_NUMBER!,
+      kakaoOptions:{
+        pfId: process.env.SOLAPI_PFID!,
+        templateId: KakaoTemplates.INQUIRY,
+        variables: {
+          "#{name}": parsed.name,
+        },
+      },
+    });
+
 
     return Response.json({
       message: "문의 등록 되셨습니다! 곧 연락드리겠습니다",

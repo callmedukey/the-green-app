@@ -45,6 +45,8 @@ const AdminSingleInquiry = async ({ params }: { params: { id: string } }) => {
 
   return (
     <CenterContainer className="max-w-4xl px-4 py-16 flex flex-col gap-4">
+      <div className="h-16 w-full" />
+
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label>성함</Label>

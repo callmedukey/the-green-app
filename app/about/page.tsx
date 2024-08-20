@@ -11,6 +11,7 @@ export default function AboutUsPage() {
         priority
         className="w-full my-16 min-h-[100px]"
       />
+
       <section className="py-12 md:py-20 max-width-tg">
         <h1 className="text-[2.5rem] xl:ml-16 ml-4 sm:ml-8 md:ml-12 font-bold">
           About 더그린
@@ -42,19 +43,19 @@ export default function AboutUsPage() {
             <div className="w-full bg-primary h-[500px] xl:block hidden" />
             <div className="relative flex items-center justify-center xl:flex-row flex-col-reverse">
               <Image
-                src="/레메디.png"
+                src="/new.png"
                 alt="레메디 사옥"
                 height={450}
                 width={550}
                 className="h-[450px] w-[550px] my-auto xl:translate-x-[-50%]"
               />
               <span className="xl:ml-0 xl:mr-auto xl:translate-x-[-100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter flex justify-center">
-                (주)레메디 사옥
+                (주)시너스
               </span>
             </div>
             <div className="relative flex xl:flex-row flex-col items-center">
               <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter  flex justify-center">
-                (주)시너스 공장
+                (주)레메디 사옥
               </span>
               <Image
                 src="/시너스.png"

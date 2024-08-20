@@ -17,7 +17,7 @@ const page = () => {
       />
       <h1 className="text-center text-[2.5rem] font-bold mb-16">사업 분야</h1>
       <section className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 justify-center gap-4 text-white">
-        <div className="md:pt-[200px] md:px-[3rem] h-[300px] w-full md:h-[450px] relative md:w-[550px] grid md:grid-rows-[200px_auto]">
+        <div className="md:pt-[200px] h-[300px] w-full md:h-[450px] relative md:w-[550px]  items-center justify-end md:justify-center flex flex-col">
           <Image
             src={construction}
             alt="건설"
@@ -26,16 +26,13 @@ const page = () => {
             className="object-fill -z-10"
             quality={100}
           />
-          <div className="flex flex-col gap-y-2 md:gap-y-[2rem] justify-center md:justify-start">
-            <h2 className="text-[2rem] font-bold text-center">건축</h2>
-            <p className="bg-finalGray/70 max-w-[393px] mx-auto break-keep p-2 font-medium w-full">
-              기본과 신뢰를 바탕으로 축적된 다양한 기술과 노하우로 완성도 높은
-              건축 시공을 제공하여 정직하게 만들어 오래가는 공간을 만들기위해
-              노력합니다
-            </p>
-          </div>
+          <h2 className="text-[2.5rem] font-bold text-center">건축</h2>
+          <p className="bg-finalGray/70 mx-auto break-keep p-2 text-[1.1rem] font-medium w-full md:mb-0 mt-6 md:mt-auto  md:h-24 px-4">
+            책임 시공으로 축적된 다양한 기술과 노하우가 완성도 높고 오래가는
+            건축물이 되도록 시공해드립니다.
+          </p>
         </div>
-        <div className="md:pt-[200px] md:px-[3rem] h-[300px] w-full md:h-[450px] relative md:w-[550px] grid md:grid-rows-[200px_auto]">
+        <div className="md:pt-[200px] h-[300px] w-full md:h-[450px] relative md:w-[550px]  items-center justify-end md:justify-center flex flex-col">
           <Image
             src={consulting}
             alt="인허가 컨설턴트"
@@ -44,15 +41,13 @@ const page = () => {
             className="object-fill -z-10"
             quality={100}
           />
-          <div className="flex flex-col gap-y-2 md:gap-y-[2rem] justify-center md:justify-start">
-            <h2 className="text-[2rem] font-bold text-center">인허가 컨설팅</h2>
-            <p className="bg-finalGray/70 max-w-[393px] break-keep p-2 font-medium w-full mx-auto">
-              훼손지 정비에 수반되는 모든 인허가 업무를 오랜 현장 경험이 풍부한
-              행정사 자격 전문가가 도우미가 되어드립니다
-            </p>
-          </div>
+          <h2 className="text-[2rem] font-bold text-center">인허가 컨설팅</h2>
+          <p className="bg-finalGray/70 mx-auto break-keep p-2 text-[1.1rem] font-medium w-full md:mb-0 mt-6 md:mt-auto  md:h-24 px-4">
+            훼손지 정비에 수반되는 모든 인허가 업무를 오랜 현장 경험이 풍부한
+            행정사 자격 전문가가 도우미가 되어드립니다
+          </p>
         </div>
-        <div className="md:pt-[200px] md:px-[3rem] h-[300px] w-full md:h-[450px] relative md:w-[550px] grid md:grid-rows-[200px_auto]">
+        <div className="md:pt-[200px] h-[300px] w-full md:h-[450px] relative md:w-[550px]  items-center justify-end md:justify-center flex flex-col">
           <Image
             src={architecture}
             alt="설계"
@@ -61,16 +56,13 @@ const page = () => {
             className="object-fill -z-10"
             quality={100}
           />
-          <div className="flex flex-col gap-y-2 md:gap-y-[2rem] justify-center md:justify-start">
-            <h2 className="text-[2rem] font-bold text-center">설계</h2>
-            <p className="bg-finalGray/70 max-w-[393px] md:max-w-[500px] break-keep p-2 font-medium w-full mx-auto">
-              고객의 요구조건을 바탕으로 입지, 문화, 환경에 따른 수요조사와 관련
-              법규 등을 철저하게 분석하여 기획부터 설계까지 전반적인 서비스를
-              제공합니다.
-            </p>
-          </div>
+          <h2 className="text-[2rem] font-bold text-center">설계</h2>
+          <p className="bg-finalGray/70 mx-auto break-keep p-2 text-[1.1rem] font-medium w-full md:mb-0 mt-6 md:mt-auto  md:h-24 px-4">
+            1평의 짜두리 땅도 남지않도록 기획설계를 통한 건물의 안전과
+            건축비용절감이 되도록 빈틈없이 설계해드립니다.
+          </p>
         </div>
-        <div className="md:pt-[200px] md:px-[3rem] h-[300px] w-full md:h-[450px] relative md:w-[550px] grid md:grid-rows-[200px_auto]">
+        <div className="md:pt-[200px] h-[300px] w-full md:h-[450px] relative md:w-[550px]  items-center justify-end md:justify-center flex flex-col">
           <Image
             src={landscape}
             alt="조경"
@@ -79,14 +71,11 @@ const page = () => {
             className="object-fill -z-10"
             quality={100}
           />
-          <div className="flex flex-col gap-y-2 md:gap-y-[2rem] justify-center md:justify-start">
-            <h2 className="text-[2rem] font-bold text-center">조경</h2>
-            <p className="bg-finalGray/70 max-w-[393px] md:max-w-[500px] break-keep p-2 font-medium w-full mx-auto">
-              훼손지에 조경 사양에 가장 적합하고 합리적인 대안을 제시하고 조경을
-              통한 건축물과 자연과의 이질감을 해소하고 푸르름을 언제던지 곁에서
-              느낄수 있도록 시공해드립니다.
-            </p>
-          </div>
+          <h2 className="text-[2rem] font-bold text-center">조경</h2>
+          <p className="bg-finalGray/70 mx-auto break-keep p-2 text-[1.1rem] font-medium w-full md:mb-0 mt-6 md:mt-auto  md:h-24 px-4">
+            훼손지 조경 사양에 최적화된 시공을 기반으로 건축물과 자연과의 조화를
+            이룰 수 있게 시공해드립니다.
+          </p>
         </div>
       </section>
     </main>

@@ -676,7 +676,7 @@ const Header = ({ session }: { session: Session | null }) => {
               scrolled && "text-primary "
             )}
           >
-            상세 견적 문의
+            상세견적문의
           </Link>
           <Link
             href="/booking"
@@ -685,7 +685,7 @@ const Header = ({ session }: { session: Session | null }) => {
               scrolled && "text-primary "
             )}
           >
-            현장 방문예약
+            현장방문예약
           </Link>
 
           <Link

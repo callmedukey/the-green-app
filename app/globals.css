@@ -102,14 +102,24 @@
     border-bottom: 10px solid white;
   }
 
-  .alt-a-fade {
-    animation: alt-a-fade 18s ease-in-out infinite;
+  .alt-1-slide {
+    animation: alt-1-slide 20s linear infinite;
   }
-  .alt-b-fade {
-    animation: alt-b-fade 18s ease-in-out infinite;
+  .alt-2-slide {
+    animation: alt-2-slide 20s linear infinite;
   }
-  .alt-c-fade {
-    animation: alt-c-fade 18s ease-in-out infinite;
+  .alt-3-slide {
+    animation: alt-3-slide 20s linear infinite;
+  }
+  .alt-4-slide {
+    animation: alt-4-slide 20s linear infinite;
+  }
+  .alt-5-slide {
+    animation: alt-5-slide 20s linear infinite;
+  }
+
+  .slider-image {
+    @apply origin-right;
   }
 
   @keyframes fade-in {
@@ -121,47 +131,57 @@
     }
   }
 
-  @keyframes alt-a-fade {
+  @keyframes alt-1-slide {
     0% {
-      opacity: 1;
+      transform: scaleX(0);
     }
-    33% {
-      opacity: 0;
+    22% {
+      transform: scaleX(0);
     }
-    66% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
+    25% {
+      transform: scaleX(1);
     }
   }
-  @keyframes alt-b-fade {
+  @keyframes alt-2-slide {
     0% {
-      opacity: 0;
+      transform: scaleX(0);
     }
-    33% {
-      opacity: 1;
+    20% {
+      transform: scaleX(0);
     }
-    66% {
-      opacity: 0;
+    47% {
+      transform: scaleX(0);
     }
-    100% {
-      opacity: 0;
+    50% {
+      transform: scaleX(1);
     }
   }
-
-  @keyframes alt-c-fade {
+  @keyframes alt-3-slide {
     0% {
-      opacity: 0;
+      transform: scaleX(0);
     }
-    33% {
-      opacity: 0;
+    40% {
+      transform: scaleX(0);
     }
-    66% {
-      opacity: 1;
+    72% {
+      transform: scaleX(0);
+    }
+    75% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes alt-4-slide {
+    0% {
+      transform: scaleX(0);
+    }
+    60% {
+      transform: scaleX(0);
+    }
+    97% {
+      transform: scaleX(0);
     }
     100% {
-      opacity: 0;
+      transform: scaleX(1);
     }
   }
 }
