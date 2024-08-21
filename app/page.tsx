@@ -3,11 +3,11 @@ import { MainCarousel } from "@/components/main/MainCarousel";
 import MotionArticle from "@/components/main/MotionArticle";
 import Warehouse from "@/public/main-warehouse.webp";
 import Image from "next/image";
-import KakaoIcon from "@/public/kakao.svg";
 import Remedy from "@/public/new.png";
 import Gold from "@/public/금강쿼츠.png";
 import Syn from "@/public/시너스.png";
 import Qum from "@/public/큐엠.png";
+import Crane from "@/public/crane.png";
 
 export default function Component() {
   return (
@@ -50,6 +50,14 @@ export default function Component() {
               />
               <Image
                 className="slider-image alt-4-slide"
+                src={Remedy}
+                alt="easy-quote"
+                fill
+                placeholder="blur"
+                priority
+              />
+              <Image
+                className="slider-image alt-5-slide"
                 src={Remedy}
                 alt="easy-quote"
                 fill
@@ -109,8 +117,17 @@ export default function Component() {
                   placeholder="blur"
                   priority
                 />
+
                 <Image
                   className="slider-image alt-4-slide"
+                  src={Crane}
+                  alt="easy-quote"
+                  fill
+                  placeholder="blur"
+                  priority
+                />
+                <Image
+                  className="slider-image alt-5-slide"
                   src={Remedy}
                   alt="easy-quote"
                   fill

@@ -50,12 +50,12 @@ export default function AboutUsPage() {
                 className="h-[450px] w-[550px] my-auto xl:translate-x-[-50%]"
               />
               <span className="xl:ml-0 xl:mr-auto xl:translate-x-[-100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter flex justify-center">
-                (주)시너스
+                (주)레메디 사옥
               </span>
             </div>
             <div className="relative flex xl:flex-row flex-col items-center">
               <span className="xl:mr-0 xl:ml-auto xl:translate-x-[100%] text-3xl text-nowrap [text-shadow:_0_5px_5px_rgb(0_0_0_/_25%)] font-medium tracking-tighter  flex justify-center">
-                (주)레메디 사옥
+                (주)시너스
               </span>
               <Image
                 src="/시너스.png"
