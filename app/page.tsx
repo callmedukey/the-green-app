@@ -15,7 +15,7 @@ export default function Component() {
       <main className="">
         <section className="w-full py-12 md:px-8 lg:px-16 bg-primary [@media(max-width:1200px)]:min-h-[90dvh] xl:max-h-[700px]">
           <div className="grid xl:grid-cols-[45%_65%] w-full max-width-tg">
-            <div className="relative w-full aspect-video xl:hidden">
+            <div className="relative w-full min-h-[400px] xl:hidden md:min-h-[500px]">
               <Image
                 className="slider-image z-0"
                 src={Remedy}
@@ -48,9 +48,10 @@ export default function Component() {
                 placeholder="blur"
                 priority
               />
+
               <Image
                 className="slider-image alt-4-slide"
-                src={Remedy}
+                src={Crane}
                 alt="easy-quote"
                 fill
                 placeholder="blur"
